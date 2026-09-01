@@ -1,0 +1,2393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Next Note — Affordable Guitar Lessons Starting From ₹350</title>
+<meta name="description" content="Learn guitar with Next Note. Affordable online and offline guitar lessons starting from ₹350 per session, with practical guidance in chords, songs, strumming, scales, techniques and more.">
+<meta name="keywords" content="guitar lessons, affordable guitar lessons, guitar tutor, guitar teacher, online guitar lessons, offline guitar lessons, guitar classes, acoustic guitar lessons, electric guitar lessons, classical guitar lessons, ukulele lessons, beginner guitar lessons">
+<meta property="og:title" content="Next Note — Learn Guitar, Play with Confidence">
+<meta property="og:description" content="Affordable guitar lessons starting from ₹350 per online session.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%23c87932'/%3E%3Ccircle cx='50' cy='50' r='16' fill='%23f7f2e8'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============ 4. CONFIGURABLE VISUAL TOKENS ============ */
+:root{
+  --bg:#f7f2e8;
+  --surface:#fffaf1;
+  --surface-alt:#efe6d3;
+  --surface-deep:#e7dcc3;
+  --text:#2b241d;
+  --muted:#756b5f;
+  --accent:#c87932;
+  --accent-dark:#8f4f20;
+  --moss:#6b7a52;
+  --line:rgba(43,36,29,.14);
+  --shadow:0 20px 50px -25px rgba(43,36,29,.35);
+  --radius:18px;
+  --radius-sm:10px;
+  --font-display:'Fraunces', serif;
+  --font-body:'Inter', sans-serif;
+  --font-mono:'Space Mono', monospace;
+  --ease:cubic-bezier(.16,.84,.44,1);
+}
+
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font-body);
+  font-size:16px;
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+button{font-family:inherit;cursor:pointer;}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;margin:0;line-height:1.05;letter-spacing:-0.01em;}
+p{margin:0;}
+.eyebrow{
+  font-family:var(--font-mono);
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent-dark);
+  display:flex;align-items:center;gap:10px;
+}
+.eyebrow::before{content:'';width:26px;height:1px;background:var(--accent);display:inline-block;}
+.wrap{max-width:1240px;margin:0 auto;padding:0 32px;}
+section{position:relative;padding:120px 0;}
+@media(max-width:768px){section{padding:80px 0;} .wrap{padding:0 20px;}}
+
+/* rosette "o" treatment for signature headline letters */
+.rosette{
+  display:inline-block;
+  position:relative;
+  width:.72em;height:.72em;
+  border-radius:50%;
+  border:.09em solid currentColor;
+  vertical-align:-0.06em;
+  margin:0 .02em;
+}
+.rosette::after{
+  content:'';
+  position:absolute;inset:22%;
+  border-radius:50%;
+  border:.06em solid currentColor;
+  opacity:.55;
+}
+
+/* ============ LOADER ============ */
+#loader{
+  position:fixed;inset:0;background:var(--bg);z-index:9999;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;
+  transition:opacity .6s var(--ease), visibility .6s var(--ease);
+}
+#loader.hidden{opacity:0;visibility:hidden;pointer-events:none;}
+.pick{
+  width:46px;height:58px;
+  background:var(--accent);
+  clip-path:path('M23 0C33 4 46 20 46 38C46 51 36 58 23 58C10 58 0 51 0 38C0 20 13 4 23 0Z');
+  animation:pickspin 1.1s linear infinite;
+}
+@keyframes pickspin{to{transform:rotate(360deg);}}
+.loader-text{font-family:var(--font-mono);font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);}
+
+/* ============ SCROLL PROGRESS ============ */
+#scroll-progress{
+  position:fixed;top:0;left:0;width:100%;height:3px;z-index:1000;background:transparent;
+}
+#scroll-progress-track{position:relative;width:100%;height:100%;background:var(--line);}
+#scroll-progress-fill{position:absolute;left:0;top:0;height:100%;width:0%;background:var(--accent);}
+#scroll-progress-pick{
+  position:absolute;top:50%;width:16px;height:20px;left:0%;
+  transform:translate(-50%,-50%) rotate(0deg);
+  background:var(--accent-dark);
+  clip-path:path('M8 0C12 1.5 16 7 16 14C16 18.5 12.5 20 8 20C3.5 20 0 18.5 0 14C0 7 4 1.5 8 0Z');
+}
+
+/* ============ NAVBAR ============ */
+#navbar{
+  position:fixed;top:18px;left:50%;transform:translateX(-50%);
+  z-index:900;width:min(1100px,92%);
+  background:rgba(255,250,241,.75);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:12px 14px 12px 26px;
+  display:flex;align-items:center;justify-content:space-between;
+  box-shadow:0 10px 30px -20px rgba(43,36,29,.4);
+  transition:padding .4s var(--ease), width .4s var(--ease);
+}
+/* Where backdrop-filter isn't supported, fall back to a near-solid
+   background instead of a thin translucent one, so page content never
+   shows through and reads as a "broken/scattered" navbar while scrolling. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))){
+  #navbar{ background:rgba(255,250,241,.96); }
+}
+#navbar.compact{padding:8px 8px 8px 20px;width:min(920px,90%);box-shadow:0 14px 34px -20px rgba(43,36,29,.5);}
+.logo{font-family:var(--font-display);font-weight:600;font-size:19px;display:flex;align-items:center;gap:8px;flex-shrink:0;white-space:nowrap;}
+.logo-mark{width:22px;height:22px;border-radius:50%;border:2px solid var(--accent-dark);position:relative;flex:none;}
+.logo-mark::after{content:'';position:absolute;inset:32%;border-radius:50%;background:var(--accent-dark);}
+nav.links{display:flex;gap:22px;align-items:center;flex-shrink:1;min-width:0;}
+nav.links a{
+  font-size:14px;font-weight:500;color:var(--text);position:relative;padding:4px 0;white-space:nowrap;
+}
+nav.links a::after{content:'';position:absolute;left:0;bottom:-2px;width:0;height:1.5px;background:var(--accent);transition:width .3s var(--ease);}
+nav.links a:hover::after,nav.links a.active::after{width:100%;}
+nav.links a.active{color:var(--accent-dark);}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 24px;border-radius:999px;border:none;
+  font-weight:600;font-size:14px;letter-spacing:.01em;
+  background:var(--accent-dark);color:var(--surface);
+  transition:transform .35s var(--ease), box-shadow .35s var(--ease), background .3s;
+  position:relative;overflow:hidden;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 26px -14px rgba(143,79,32,.6);}
+.btn.ghost{background:transparent;color:var(--text);border:1.5px solid var(--line);}
+.btn.ghost:hover{border-color:var(--accent-dark);}
+.btn-cta{background:var(--accent);flex-shrink:0;white-space:nowrap;}
+.hamburger{display:none;flex-direction:column;gap:5px;width:38px;height:38px;align-items:center;justify-content:center;background:var(--surface-alt);border-radius:50%;}
+.hamburger span{width:16px;height:2px;background:var(--text);border-radius:2px;transition:transform .3s var(--ease),opacity .3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+#mobile-menu-backdrop{
+  position:fixed;inset:0;z-index:840;
+  background:rgba(43,36,29,.32);
+  opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity .3s var(--ease), visibility .3s var(--ease);
+}
+#mobile-menu-backdrop.open{opacity:1;visibility:visible;pointer-events:auto;}
+
+#mobile-menu{
+  position:fixed;top:82px;left:50%;z-index:850;
+  width:min(360px,90vw);
+  max-height:min(72vh,520px);
+  overflow-y:auto;-webkit-overflow-scrolling:touch;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:20px;
+  box-shadow:var(--shadow);
+  padding:10px;
+  display:flex;flex-direction:column;gap:2px;
+  transform:translateX(-50%) translateY(-10px) scale(.97);
+  transform-origin:top center;
+  opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity .28s var(--ease), transform .28s var(--ease), visibility .28s var(--ease);
+}
+#mobile-menu.open{
+  opacity:1;visibility:visible;pointer-events:auto;
+  transform:translateX(-50%) translateY(0) scale(1);
+}
+#mobile-menu a.mm-link{
+  font-family:var(--font-body);font-weight:600;font-size:15.5px;
+  padding:14px 14px;border-radius:12px;
+  display:flex;align-items:center;justify-content:space-between;
+  color:var(--text);border-bottom:none;flex-shrink:0;
+  transition:background .2s var(--ease), color .2s var(--ease);
+}
+#mobile-menu a.mm-link:not(:last-of-type){border-bottom:1px solid var(--line);}
+#mobile-menu a.mm-link:hover,#mobile-menu a.mm-link:active{background:var(--surface-alt);color:var(--accent-dark);}
+#mobile-menu a.mm-link::after{
+  content:'';width:6px;height:6px;border-right:1.5px solid var(--muted);border-bottom:1.5px solid var(--muted);
+  transform:rotate(-45deg);flex-shrink:0;opacity:.55;
+}
+#mobile-menu .btn{
+  margin-top:8px;width:100%;justify-content:center;
+  font-family:var(--font-body);font-size:14.5px;padding:14px 20px;
+  border-bottom:none;flex-shrink:0;
+}
+#mobile-menu a.mm-link.btn::after{content:none;}
+
+@media(max-width:1180px){
+  nav.links{display:none;}
+  .hamburger{display:flex;}
+  #navbar{padding:10px 10px 10px 20px;}
+  .nav-cta{display:none;}
+}
+/* Belt-and-suspenders: the mobile menu must never be able to render on
+   desktop widths, even if its "open" state somehow persists across a
+   resize (e.g. the menu was opened on a narrow window that was then
+   widened). This is the fix for the stray oversized "Book a Lesson"
+   pill that could appear over the desktop navbar. */
+@media(min-width:1181px){
+  #mobile-menu, #mobile-menu-backdrop{display:none !important;}
+}
+
+/* ============ HERO ============ */
+#hero{
+  min-height:100vh;display:flex;align-items:center;padding-top:140px;
+  background:
+    radial-gradient(circle at 85% 15%, rgba(200,121,50,.18), transparent 45%),
+    radial-gradient(circle at 10% 90%, rgba(107,122,82,.14), transparent 45%),
+    var(--bg);
+  overflow:hidden;
+}
+.hero-grid{display:grid;grid-template-columns:1.18fr .82fr;gap:36px;align-items:center;width:100%;}
+@media(max-width:960px){.hero-grid{grid-template-columns:1fr;}}
+.hero-copy .eyebrow{margin-bottom:22px;}
+.hero-copy h1{font-size:clamp(30px,4.3vw,52px);margin-bottom:24px;}
+.hero-copy h1 em{font-style:italic;color:var(--accent-dark);}
+.hero-copy p.lead{font-size:18px;color:var(--muted);max-width:480px;margin-bottom:28px;}
+.price-pill{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--surface);border:1px solid var(--line);
+  padding:10px 18px;border-radius:999px;font-size:14px;margin-bottom:34px;
+  box-shadow:var(--shadow);
+}
+.price-pill b{color:var(--accent-dark);font-family:var(--font-mono);}
+.afford-strip{
+  font-family:var(--font-mono);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--moss);font-weight:700;margin-bottom:20px;
+}
+.price-badge{
+  display:inline-flex;flex-direction:column;align-items:flex-start;gap:2px;
+  background:var(--surface);border:1.5px solid var(--accent);border-radius:var(--radius);
+  padding:16px 26px;margin-bottom:30px;
+  box-shadow:var(--shadow), 0 0 0 5px rgba(200,121,50,.07);
+  position:relative;
+  transition:transform .4s var(--ease), box-shadow .4s var(--ease), border-color .4s var(--ease);
+}
+.price-badge:hover{
+  transform:translateY(-3px);
+  box-shadow:0 26px 50px -22px rgba(143,79,32,.55), 0 0 0 7px rgba(200,121,50,.12);
+  border-color:var(--accent-dark);
+}
+.price-badge::before{
+  content:'🎸';position:absolute;top:-14px;right:-14px;width:34px;height:34px;border-radius:50%;
+  background:var(--accent-dark);display:flex;align-items:center;justify-content:center;font-size:15px;
+  transition:transform .4s var(--ease);
+}
+.price-badge:hover::before{transform:rotate(-14deg) scale(1.08);}
+.price-badge-eyebrow{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);}
+.price-badge-amount{font-family:var(--font-display);font-size:44px;font-weight:700;color:var(--accent-dark);line-height:1;}
+.price-badge-amount small{font-size:18px;font-family:var(--font-body);font-weight:600;color:var(--muted);}
+.price-badge-sub{font-size:12.5px;color:var(--muted);}
+.hero-microcopy{font-family:var(--font-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:18px;}
+.hero-ctas{display:flex;gap:16px;flex-wrap:wrap;}
+.hero-visual{position:relative;height:560px;}
+@media(max-width:960px){.hero-visual{height:400px;order:-1;}}
+#hero-canvas{width:100%;height:100%;display:block;cursor:grab;}
+#hero-canvas:active{cursor:grabbing;}
+.hero-fallback-img{
+  position:absolute;inset:0;border-radius:24px;
+  background:linear-gradient(160deg,var(--surface-alt),var(--surface-deep));
+  display:none;align-items:center;justify-content:center;
+}
+.float-label{
+  position:absolute;font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--surface);border:1px solid var(--line);padding:7px 13px;border-radius:999px;
+  box-shadow:var(--shadow);pointer-events:none;color:var(--accent-dark);
+}
+.drag-hint{
+  position:absolute;bottom:10px;left:50%;transform:translateX(-50%);
+  font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;color:var(--muted);
+  display:flex;align-items:center;gap:8px;
+}
+.drag-hint svg{width:16px;height:16px;}
+
+/* string divider */
+.string-divider{width:100%;height:60px;position:relative;overflow:hidden;}
+.string-divider svg{width:100%;height:100%;}
+.string-path{fill:none;stroke:var(--line);stroke-width:1.5;}
+
+/* ============ SERVICES ============ */
+#services{background:var(--surface);}
+.section-head{max-width:640px;margin-bottom:64px;}
+.section-head h2{font-size:clamp(30px,4vw,48px);margin-top:16px;}
+.section-head p{color:var(--muted);margin-top:16px;font-size:17px;}
+.service-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+@media(max-width:800px){.service-grid{grid-template-columns:1fr;}}
+.service-card{
+  background:var(--surface-alt);border-radius:var(--radius);padding:42px;
+  border:1px solid var(--line);position:relative;overflow:hidden;
+  transition:transform .5s var(--ease), box-shadow .5s var(--ease);
+}
+.service-card.featured{background:var(--text);color:var(--surface);}
+.service-card:hover{transform:translateY(-6px);box-shadow:var(--shadow);}
+.service-tag{font-family:var(--font-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;opacity:.7;}
+.service-price{font-family:var(--font-display);font-size:44px;margin:18px 0 6px;}
+.service-price small{font-size:16px;font-family:var(--font-body);opacity:.7;font-weight:400;}
+.service-note{font-size:13px;opacity:.65;margin-bottom:22px;}
+.service-list{list-style:none;padding:0;margin:0 0 30px;display:grid;grid-template-columns:1fr 1fr;gap:10px 16px;}
+.service-list li{font-size:14px;display:flex;gap:8px;align-items:baseline;}
+.service-list li::before{content:'—';color:var(--accent);}
+.instrument-strip{
+  margin-top:36px;padding:24px 28px;border:1px dashed var(--line);border-radius:var(--radius);
+  display:flex;align-items:center;gap:20px;flex-wrap:wrap;background:var(--surface);
+}
+.instrument-strip-label{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-dark);flex:none;}
+.instrument-chips{display:flex;gap:10px;flex-wrap:wrap;flex:1;}
+.instrument-chip{
+  font-size:13px;font-weight:600;padding:7px 16px;border-radius:999px;background:var(--surface-alt);border:1px solid var(--line);
+}
+.instrument-strip-note{font-size:13px;color:var(--muted);flex:none;}
+@media(max-width:700px){.instrument-strip{flex-direction:column;align-items:flex-start;}}
+
+/* ============ LESSON TOPICS / GUITAR JOURNEY ============ */
+#topics{background:var(--bg);}
+.journey-track{position:relative;padding-top:6px;}
+.journey-line{
+  position:absolute;left:0;right:0;top:34px;height:1px;
+  background:repeating-linear-gradient(90deg,var(--line) 0 10px,transparent 10px 18px);
+  z-index:0;
+}
+.topic-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;position:relative;z-index:1;}
+@media(max-width:900px){.topic-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:520px){.topic-grid{grid-template-columns:1fr;}}
+.topic-card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);
+  padding:26px 22px;transition:transform .4s var(--ease), border-color .4s, box-shadow .4s var(--ease);
+  position:relative;
+}
+.topic-card:hover{transform:translateY(-4px) rotate(-.4deg);border-color:var(--accent);box-shadow:var(--shadow);}
+.topic-num{
+  font-family:var(--font-mono);font-size:11px;color:var(--muted);
+  display:inline-flex;align-items:center;justify-content:center;
+  width:26px;height:26px;border-radius:50%;border:1px solid var(--line);background:var(--surface-alt);
+}
+.topic-card:hover .topic-num{border-color:var(--accent-dark);color:var(--accent-dark);}
+.topic-card h4{font-size:19px;margin-top:12px;}
+.topic-tier{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--moss);margin-top:6px;display:block;}
+
+/* ============ WHY LEARN ============ */
+#why{background:var(--surface-alt);}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+@media(max-width:900px){.why-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.why-grid{grid-template-columns:1fr;}}
+.why-card{background:var(--surface);border-radius:var(--radius);padding:30px;border:1px solid var(--line);}
+.why-card h4{font-size:20px;margin-bottom:10px;}
+.why-card p{color:var(--muted);font-size:14.5px;}
+
+/* ============ CLIENTS ============ */
+#clients{background:var(--surface-deep);overflow:hidden;}
+.marquee-track{display:flex;gap:22px;width:max-content;}
+.client-card{
+  width:230px;flex:none;background:var(--surface);border-radius:var(--radius);padding:24px;border:1px solid var(--line);
+}
+.client-avatar{width:46px;height:46px;border-radius:50%;background:var(--accent);margin-bottom:14px;display:flex;align-items:center;justify-content:center;color:var(--surface);font-family:var(--font-display);font-weight:600;}
+.client-card h4{font-size:16px;}
+.client-card .service-tag{font-size:11px;color:var(--accent-dark);margin:4px 0 8px;}
+.client-card p{font-size:13.5px;color:var(--muted);}
+
+/* ============ TESTIMONIALS ============ */
+#testimonials{background:var(--bg);}
+.testi-wrap{position:relative;max-width:760px;margin:0 auto;}
+.testi-slide{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:52px;text-align:center;display:none;
+}
+.testi-slide.active{display:block;}
+.testi-slide p.quote{font-family:var(--font-display);font-size:24px;line-height:1.4;margin-bottom:26px;}
+.testi-slide .name{font-weight:700;}
+.testi-slide .role{color:var(--muted);font-size:13px;}
+.testi-controls{display:flex;justify-content:center;gap:14px;margin-top:28px;}
+.testi-dot{width:9px;height:9px;border-radius:50%;background:var(--line);border:none;transition:.3s;}
+.testi-dot.active{background:var(--accent-dark);width:22px;border-radius:6px;}
+.testi-arrow{
+  position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;
+  background:var(--surface);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;
+}
+.testi-arrow.prev{left:-60px;}.testi-arrow.next{right:-60px;}
+@media(max-width:840px){.testi-arrow{display:none;} .testi-slide{padding:32px 24px;}}
+
+/* ============ PLAY A NOTE (mini interactive) ============ */
+#playnote{background:var(--surface);}
+.playnote-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:56px;align-items:center;}
+@media(max-width:900px){.playnote-grid{grid-template-columns:1fr;gap:32px;}}
+.playnote-copy p{color:var(--muted);font-size:16.5px;margin-top:16px;max-width:440px;}
+.playnote-sound-toggle{
+  margin-top:26px;display:inline-flex;align-items:center;gap:10px;
+  padding:11px 20px;border-radius:999px;border:1px solid var(--line);background:var(--surface-alt);
+  font-size:13.5px;font-weight:600;transition:border-color .3s,background .3s;
+}
+.playnote-sound-toggle:hover{border-color:var(--accent-dark);}
+.playnote-sound-toggle[aria-pressed="true"]{background:var(--accent);color:var(--surface);border-color:var(--accent);}
+.playnote-sound-toggle .dot{width:7px;height:7px;border-radius:50%;background:var(--muted);}
+.playnote-sound-toggle[aria-pressed="true"] .dot{background:var(--surface);}
+.playnote-hint{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.06em;color:var(--muted);margin-top:14px;text-transform:uppercase;}
+
+.strings-stage{
+  background:linear-gradient(160deg,var(--surface-deep),var(--surface-alt));
+  border:1px solid var(--line);border-radius:var(--radius);
+  padding:48px 34px;position:relative;overflow:hidden;box-shadow:var(--shadow);
+}
+.strings-fret-dots{position:absolute;inset:0;pointer-events:none;opacity:.5;}
+.strings-list{display:flex;flex-direction:column;gap:22px;position:relative;z-index:1;}
+.guitar-string{
+  height:3px;width:100%;border-radius:3px;
+  background:linear-gradient(90deg,var(--accent-dark),var(--accent));
+  transform-origin:center;
+  cursor:pointer;touch-action:manipulation;
+  transition:box-shadow .2s;
+}
+.guitar-string:nth-child(1){height:2px;}
+.guitar-string:nth-child(2){height:2.4px;}
+.guitar-string:nth-child(3){height:2.8px;}
+.guitar-string:nth-child(4){height:3.2px;}
+.guitar-string:nth-child(5){height:3.8px;}
+.guitar-string:nth-child(6){height:4.4px;}
+.guitar-string.plucked{animation:pluck .45s cubic-bezier(.36,.07,.19,.97);}
+@keyframes pluck{
+  0%{transform:scaleY(1) translateY(0);}
+  15%{transform:scaleY(1) translateY(-9px);}
+  35%{transform:scaleY(1) translateY(7px);}
+  55%{transform:scaleY(1) translateY(-4px);}
+  75%{transform:scaleY(1) translateY(2px);}
+  100%{transform:scaleY(1) translateY(0);}
+}
+.string-note-label{
+  position:absolute;font-family:var(--font-mono);font-size:11px;color:var(--muted);
+  right:0;top:-16px;letter-spacing:.06em;
+}
+.pluck-burst{
+  position:absolute;pointer-events:none;font-family:var(--font-display);font-size:20px;color:var(--accent-dark);
+  animation:burstUp .8s ease-out forwards;
+}
+@keyframes burstUp{
+  0%{opacity:0;transform:translate(-50%,0) scale(.7);}
+  20%{opacity:1;transform:translate(-50%,-6px) scale(1);}
+  100%{opacity:0;transform:translate(-50%,-46px) scale(1.1);}
+}
+
+/* ============ ABOUT ============ */
+#about{background:var(--surface-alt);}
+.about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:start;}
+@media(max-width:900px){.about-grid{grid-template-columns:1fr;}}
+.about-portrait{
+  aspect-ratio:4/5;border-radius:var(--radius);background:linear-gradient(160deg,var(--surface-deep),var(--surface));
+  border:1px solid var(--line);display:flex;align-items:center;justify-content:center;position:relative;
+}
+.about-copy h2{font-size:clamp(28px,3.6vw,42px);margin:16px 0 20px;}
+.about-copy p{color:var(--muted);margin-bottom:18px;font-size:16.5px;}
+.about-facts{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:30px;}
+.about-fact{border-top:1px solid var(--line);padding-top:12px;}
+.about-fact h5{font-family:var(--font-mono);font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent-dark);}
+.about-fact p{font-size:14.5px;margin-top:6px;color:var(--text);}
+.about-me-row{margin-top:80px;padding-top:80px;border-top:1px solid var(--line);grid-template-columns:1.1fr .9fr;}
+@media(max-width:900px){.about-me-row{grid-template-columns:1fr;}}
+.about-visual{
+  aspect-ratio:1/1;max-height:340px;border-radius:var(--radius);
+  background:linear-gradient(160deg,var(--surface-deep),var(--surface));
+  border:1px solid var(--line);
+}
+.about-visual canvas{width:100%;height:100%;display:block;}
+/* On smaller screens this small rotating-pick visual sits AFTER the About Me
+   text (not above it), and is centered rather than stretched full-width. */
+@media(max-width:900px){
+  .about-visual{
+    order:2;max-height:220px;width:220px;max-width:60vw;
+    margin:36px auto 0;
+  }
+  .about-copy{order:1;}
+}
+@media(max-width:480px){
+  .about-visual{max-height:180px;width:180px;}
+}
+
+/* ---- About: premium interactive-guitar composition (top of section) ---- */
+.about-hero-grid{
+  display:grid;grid-template-columns:.95fr 1.05fr;gap:56px;align-items:center;
+  margin-bottom:88px;
+}
+@media(max-width:900px){
+  .about-hero-grid{grid-template-columns:1fr;gap:36px;margin-bottom:56px;}
+}
+.about-3d-stage{
+  position:relative;aspect-ratio:4/5;border-radius:var(--radius);
+  background:
+    radial-gradient(circle at 50% 28%, rgba(200,121,50,.35), transparent 60%),
+    linear-gradient(165deg, var(--text) 0%, #3a3024 100%);
+  overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);
+}
+@media(max-width:900px){
+  .about-3d-stage{order:2;aspect-ratio:4/3;max-height:380px;}
+}
+.about-3d-stage canvas{width:100%;height:100%;display:block;cursor:grab;touch-action:none;}
+.about-3d-stage canvas:active{cursor:grabbing;}
+.about-3d-fallback{position:absolute;inset:0;display:none;align-items:center;justify-content:center;}
+.about-3d-glow{
+  position:absolute;top:50%;left:50%;width:74%;height:74%;
+  transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle, rgba(247,242,232,.16), transparent 70%);
+}
+.about-3d-ring{
+  position:absolute;top:50%;left:50%;border:1px solid rgba(247,242,232,.14);
+  border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);
+}
+.about-3d-ring.r1{width:60%;height:60%;}
+.about-3d-ring.r2{width:80%;height:80%;border-color:rgba(247,242,232,.08);}
+.about-3d-hint{
+  position:absolute;bottom:16px;left:50%;transform:translateX(-50%);
+  font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(247,242,232,.55);display:flex;align-items:center;gap:8px;transition:opacity .4s var(--ease);
+}
+.about-3d-hint svg{width:14px;height:14px;}
+@media(max-width:900px){.about-hero-copy{order:1;}}
+.about-hero-copy h2{font-size:clamp(28px,3.6vw,44px);margin:16px 0 20px;}
+.about-hero-copy p{color:var(--muted);margin-bottom:16px;font-size:16.5px;max-width:520px;}
+.about-feature-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;margin-top:30px;
+}
+.about-feature-card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);
+  padding:18px 16px;transition:transform .35s var(--ease), border-color .35s var(--ease), box-shadow .35s var(--ease);
+}
+.about-feature-card:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:var(--shadow);}
+.about-feature-icon{
+  width:34px;height:34px;border-radius:50%;background:var(--surface-deep);
+  display:flex;align-items:center;justify-content:center;color:var(--accent-dark);margin-bottom:10px;
+}
+.about-feature-icon svg{width:17px;height:17px;}
+.about-feature-card h5{font-family:var(--font-body);font-weight:700;font-size:14.5px;margin-bottom:4px;color:var(--text);}
+.about-feature-card p{font-size:12.5px;color:var(--muted);margin:0;}
+
+/* ============ UPCOMING — signature section ============ */
+#upcoming{
+  background:var(--text);color:var(--surface);
+  min-height:90vh;display:flex;align-items:center;overflow:hidden;position:relative;
+}
+#upcoming::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 30% 30%, rgba(200,121,50,.25), transparent 55%),
+             radial-gradient(circle at 80% 75%, rgba(107,122,82,.25), transparent 55%);
+  pointer-events:none;
+}
+.upcoming-inner{position:relative;z-index:2;text-align:center;width:100%;}
+.upcoming-eyebrow{font-family:var(--font-mono);letter-spacing:.2em;text-transform:uppercase;font-size:12px;color:var(--accent);margin-bottom:20px;}
+#upcoming h2{font-size:clamp(38px,7vw,92px);color:var(--surface);}
+#upcoming h2 span{display:block;color:transparent;-webkit-text-stroke:1px var(--surface);}
+.upcoming-sub{font-size:17px;color:rgba(247,242,232,.65);margin:24px auto 50px;max-width:520px;}
+.string-glow{position:absolute;left:0;top:50%;width:100%;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.5;filter:blur(1px);}
+.upcoming-cards{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;max-width:1000px;margin:0 auto;}
+@media(max-width:900px){.upcoming-cards{grid-template-columns:repeat(2,1fr);}}
+.upcoming-card{
+  border:1px solid rgba(247,242,232,.18);border-radius:var(--radius-sm);padding:22px 14px;
+  font-family:var(--font-mono);font-size:11.5px;letter-spacing:.04em;color:rgba(247,242,232,.55);
+  filter:blur(3px);opacity:.55;transition:filter .6s var(--ease), opacity .6s var(--ease);
+}
+.upcoming-card.revealed{filter:blur(0);opacity:1;color:var(--surface);}
+.notes-field{position:absolute;inset:0;pointer-events:none;z-index:1;}
+.floating-note{position:absolute;font-size:22px;color:rgba(247,242,232,.35);}
+
+/* ============ FAQ ============ */
+#faq{background:var(--surface-alt);}
+/* FAQ is desktop-only for now — hidden on responsive/mobile widths,
+   along with its mobile-menu and footer links, so there's nothing
+   pointing at a section that isn't there. */
+@media(max-width:900px){
+  #faq, #mm-faq-link, #footer-faq-link{display:none;}
+}
+.faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:12px;}
+.faq-item{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);
+  overflow:hidden;transition:border-color .3s;
+}
+.faq-item.open{border-color:var(--accent-dark);}
+.faq-q{
+  width:100%;text-align:left;background:none;border:none;padding:20px 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  font-family:var(--font-body);font-weight:600;font-size:15.5px;color:var(--text);
+}
+.faq-q .faq-plus{
+  flex:none;width:22px;height:22px;position:relative;
+}
+.faq-q .faq-plus::before,.faq-q .faq-plus::after{
+  content:'';position:absolute;background:var(--accent-dark);border-radius:2px;
+  top:50%;left:50%;transform:translate(-50%,-50%);
+}
+.faq-q .faq-plus::before{width:14px;height:2px;}
+.faq-q .faq-plus::after{width:2px;height:14px;transition:transform .3s var(--ease), opacity .3s var(--ease);}
+.faq-item.open .faq-plus::after{transform:translate(-50%,-50%) rotate(90deg);opacity:0;}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s var(--ease);}
+.faq-a p{padding:0 24px 22px;color:var(--muted);font-size:14.5px;max-width:620px;}
+
+/* ============ CONTACT ============ */
+#contact{background:var(--surface);}
+.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;}
+@media(max-width:900px){.contact-grid{grid-template-columns:1fr;}}
+.contact-copy h2{font-size:clamp(30px,4vw,50px);}
+.contact-copy p.lead{color:var(--muted);margin:18px 0 34px;font-size:17px;max-width:420px;}
+.contact-direct{display:flex;flex-direction:column;gap:14px;margin-bottom:30px;}
+.contact-direct a{
+  display:flex;align-items:center;gap:12px;padding:14px 18px;border:1px solid var(--line);
+  border-radius:999px;font-size:14px;font-weight:600;transition:.3s var(--ease);
+}
+.contact-direct a:hover{border-color:var(--accent-dark);background:var(--surface-alt);}
+.social-row{display:flex;gap:10px;}
+.icon-btn{
+  width:42px;height:42px;border-radius:50%;border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;transition:.3s var(--ease);
+}
+.icon-btn:hover{background:var(--accent-dark);color:var(--surface);border-color:var(--accent-dark);}
+
+form#lesson-form{
+  background:var(--surface-alt);border:1px solid var(--line);border-radius:var(--radius);padding:38px;
+  display:grid;grid-template-columns:1fr 1fr;gap:18px;
+}
+@media(max-width:560px){form#lesson-form{grid-template-columns:1fr;padding:26px;}}
+.field{display:flex;flex-direction:column;gap:6px;}
+.field.full{grid-column:1/-1;}
+.field label{font-size:12.5px;font-weight:600;color:var(--muted);}
+.field input,.field select,.field textarea{
+  border:1px solid var(--line);background:var(--surface);border-radius:var(--radius-sm);
+  padding:12px 14px;font-family:inherit;font-size:14.5px;color:var(--text);
+  transition:border-color .3s;
+}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent-dark);}
+.field textarea{resize:vertical;min-height:100px;}
+.field.invalid input,.field.invalid textarea{border-color:#b3462c;}
+.field-error{font-size:11.5px;color:#b3462c;display:none;}
+.field.invalid .field-error{display:block;}
+.form-status{grid-column:1/-1;font-size:14px;font-family:var(--font-mono);padding:8px 0;display:none;}
+.form-status.show{display:block;}
+.form-status.success{color:var(--moss);}
+.form-status.error{color:#b3462c;}
+#submit-btn{grid-column:1/-1;justify-self:start;}
+#submit-btn:disabled{opacity:.6;cursor:not-allowed;transform:none;}
+
+/* final CTA */
+#final-cta{background:var(--moss);color:var(--surface);padding:100px 0;text-align:center;}
+#final-cta h2{font-size:clamp(30px,5vw,54px);color:var(--surface);}
+#final-cta p{color:rgba(247,242,232,.8);max-width:480px;margin:20px auto 34px;}
+#final-cta .btn{background:var(--surface);color:var(--text);}
+#final-cta .btn.ghost{border-color:rgba(247,242,232,.4);color:var(--surface);}
+.cta-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+
+/* ============ FOOTER ============ */
+footer{background:var(--text);color:rgba(247,242,232,.7);padding:60px 0 30px;}
+.footer-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px;padding-bottom:40px;border-bottom:1px solid rgba(247,242,232,.14);}
+.footer-logo{font-family:var(--font-display);font-size:24px;color:var(--surface);}
+.footer-links{display:flex;gap:40px;flex-wrap:wrap;}
+.footer-col h5{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;}
+.footer-col a{display:block;font-size:14px;margin-bottom:9px;color:rgba(247,242,232,.7);}
+.footer-col a:hover{color:var(--surface);}
+.footer-bottom{padding-top:26px;display:flex;justify-content:space-between;font-size:12.5px;flex-wrap:wrap;gap:10px;}
+
+/* reveal utility */
+.reveal{opacity:0;transform:translateY(36px);}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important;}
+}
+::selection{background:var(--accent);color:var(--surface);}
+:focus-visible{outline:2px solid var(--accent-dark);outline-offset:3px;}
+
+/* ============ CUSTOM CURSOR (desktop only) ============ */
+#custom-cursor{
+  position:fixed;top:0;left:0;width:20px;height:20px;border-radius:50%;
+  border:1.5px solid var(--accent-dark);pointer-events:none;z-index:9500;
+  transform:translate(-50%,-50%);
+  transition:width .25s var(--ease),height .25s var(--ease),background .25s var(--ease),border-color .25s var(--ease);
+  mix-blend-mode:normal;
+}
+#custom-cursor::after{
+  content:'';position:absolute;top:50%;left:50%;width:4px;height:4px;border-radius:50%;
+  background:var(--accent-dark);transform:translate(-50%,-50%);
+}
+#custom-cursor.hovering{width:52px;height:52px;background:rgba(200,121,50,.12);}
+#custom-cursor.on-3d{width:34px;height:34px;border-style:dashed;background:rgba(200,121,50,.08);}
+#custom-cursor.hidden-cursor{opacity:0;}
+body.custom-cursor-active, body.custom-cursor-active a, body.custom-cursor-active button{cursor:none;}
+/* The custom cursor never takes over the navbar — restore the normal
+   pointer there so nav links/buttons behave like an ordinary navbar. */
+body.custom-cursor-active #navbar,
+body.custom-cursor-active #navbar a,
+body.custom-cursor-active #navbar button,
+body.custom-cursor-active #mobile-menu,
+body.custom-cursor-active #mobile-menu a{
+  cursor:pointer;
+}
+@media(hover:none),(pointer:coarse){
+  #custom-cursor{display:none !important;}
+}
+
+/* ============ RESPONSIVE REFINEMENTS — ALL DEVICES ============ */
+/* Larger touch targets on touch devices, without changing desktop look */
+@media(hover:none),(pointer:coarse){
+  .btn{padding:14px 26px;}
+  .filter-btn{padding:11px 18px;}
+  .testi-dot{width:11px;height:11px;}
+  .icon-btn{width:46px;height:46px;}
+}
+
+/* Comfortable hamburger tap target */
+.hamburger{width:44px;height:44px;}
+
+/* Tablet range: tighten hero + section rhythm a touch */
+@media(max-width:1080px){
+  .hero-grid{gap:32px;}
+}
+
+/* Small phones */
+@media(max-width:480px){
+  .wrap{padding:0 16px;}
+  section{padding:64px 0;}
+  .hero-copy h1{font-size:clamp(32px,9vw,42px);max-width:none;}
+  .price-badge{padding:13px 20px;}
+  .price-badge-amount{font-size:34px;}
+  .price-badge-amount small{font-size:15px;}
+  .hero-visual{height:300px;}
+  .float-label{display:none;}
+  .upcoming-cards{grid-template-columns:1fr;}
+  #upcoming h2{font-size:clamp(30px,10vw,44px);}
+  .service-card{padding:26px;}
+  .service-list{grid-template-columns:1fr;}
+  form#lesson-form{padding:20px;}
+  .logo{font-size:16px;}
+  .footer-links{gap:26px;}
+  .testi-arrow.prev{left:-60px;}
+  .strings-stage{padding:34px 20px;}
+}
+
+/* Very small phones (320–374px) */
+@media(max-width:374px){
+  .hero-copy h1{font-size:clamp(28px,9.5vw,34px);}
+  .price-badge-amount{font-size:28px;}
+  .hero-ctas .btn, .cta-row .btn{padding:12px 18px;font-size:13px;}
+  #navbar{padding:8px 8px 8px 14px;}
+}
+
+/* Landscape phones: keep the hero from forcing excessive scroll */
+@media(max-height:480px) and (orientation:landscape){
+  #hero{min-height:auto;padding-top:110px;padding-bottom:40px;}
+  .hero-visual{height:240px;}
+}
+
+/* Large / wide desktop screens: cap line-length driven scaling */
+@media(min-width:1600px){
+  .wrap{max-width:1360px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ CUSTOM CURSOR ============ -->
+<div id="custom-cursor" aria-hidden="true"></div>
+
+<!-- ============ LOADER ============ -->
+<div id="loader" aria-hidden="true">
+  <div class="pick"></div>
+  <div class="loader-text">Tune in…</div>
+</div>
+
+<!-- ============ SCROLL PROGRESS ============ -->
+<div id="scroll-progress">
+  <div id="scroll-progress-track">
+    <div id="scroll-progress-fill"></div>
+    <div id="scroll-progress-pick"></div>
+  </div>
+</div>
+
+
+<!-- ============ NAVBAR ============ -->
+<header id="navbar">
+  <a href="#hero" class="logo"><span class="logo-mark"></span><span id="nav-logo-text">Next Note</span></a>
+  <nav class="links">
+    <a href="#hero">Home</a>
+    <a href="#services">Services</a>
+    <a href="#clients">Clients</a>
+    <a href="#upcoming">Upcoming</a>
+    <a href="#about">About</a>
+    <a href="#topics">Curriculum</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <a href="#contact" class="btn btn-cta nav-cta" data-cursor="button">Book a Lesson</a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div id="mobile-menu-backdrop"></div>
+<div id="mobile-menu">
+  <a href="#hero" class="mm-link">Home</a>
+  <a href="#services" class="mm-link">Services</a>
+  <a href="#clients" class="mm-link">Clients</a>
+  <a href="#upcoming" class="mm-link">Upcoming</a>
+  <a href="#about" class="mm-link">About</a>
+  <a href="#topics" class="mm-link">Curriculum</a>
+  <a href="#faq" class="mm-link" id="mm-faq-link">FAQ</a>
+  <a href="#contact" class="mm-link">Contact</a>
+  <a href="#contact" class="btn btn-cta mm-link">Book a Lesson</a>
+</div>
+
+<!-- ============ HERO ============ -->
+<section id="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <div class="eyebrow reveal">Affordable Online &amp; Offline Guitar Lessons</div>
+      <h1 class="reveal">Learn Guitar,<br>Play with <em>C<span class="rosette"></span>nfidence</em></h1>
+      <p class="lead reveal">Premium guitar lessons with practical guidance — starting from just ₹350 / ~$4 per online session.</p>
+      <div class="afford-strip reveal">Quality guitar lessons. Without the expensive price tag.</div>
+      <div class="price-badge reveal">
+        <span class="price-badge-eyebrow">Starting At</span>
+        <span class="price-badge-amount">₹350<small> / ~$4</small></span>
+        <span class="price-badge-sub">per online session</span>
+      </div>
+      <div class="hero-ctas reveal">
+        <a href="#contact" class="btn btn-cta" data-cursor="button" data-magnetic>Start Learning</a>
+        <a href="#services" class="btn ghost" data-cursor="button" data-magnetic>Explore Lessons</a>
+      </div>
+      <p class="hero-microcopy reveal">Affordable. Practical. Professional.</p>
+    </div>
+    <div class="hero-visual">
+      <canvas id="hero-canvas" data-cursor="drag"></canvas>
+      <div class="hero-fallback-img" id="hero-fallback">
+        <svg width="70%" viewBox="0 0 200 320" fill="none">
+          <ellipse cx="100" cy="230" rx="70" ry="82" fill="#e7dcc3" stroke="#8f4f20" stroke-width="2"/>
+          <circle cx="100" cy="215" r="26" fill="#2b241d" opacity=".85"/>
+          <rect x="92" y="20" width="16" height="180" rx="6" fill="#8f4f20"/>
+          <rect x="86" y="10" width="28" height="26" rx="4" fill="#2b241d"/>
+        </svg>
+      </div>
+      <div class="drag-hint" id="drag-hint">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12h6M9 12l2-2M9 12l2 2M15 12l-2-2M15 12l-2 2"/></svg>
+        <span id="drag-hint-text">Drag to explore</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="string-divider"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path id="string-path-1" class="string-path" d="M0,30 Q300,10 600,30 T1200,30"/></svg></div>
+
+<!-- ============ SERVICES ============ -->
+<section id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Ways To Learn</div>
+      <h2>Choose Your Way To Learn</h2>
+      <p>Two simple paths — pick whichever fits your schedule and learning style.</p>
+    </div>
+    <div class="service-grid">
+      <div class="service-card reveal">
+        <span class="service-tag">Online · Affordable</span>
+        <div class="service-price">₹350 <small>/ ~$4</small></div>
+        <p class="service-note">Starting from ₹350 / approximately $4 per session. Final pricing may vary depending on lesson format and requirements.</p>
+        <ul class="service-list">
+          <li>One-to-one online lessons</li>
+          <li>Beginner-friendly teaching</li>
+          <li>Chords, scales &amp; power chords</li>
+          <li>Strumming, picking &amp; rhythm</li>
+          <li>Song learning &amp; fingerstyle</li>
+          <li>Lead guitar &amp; improvisation</li>
+          <li>Music theory &amp; tabs</li>
+          <li>Rock, blues &amp; jazz basics</li>
+        </ul>
+        <a href="#contact" class="btn btn-cta" data-cursor="button" data-magnetic>Book Online Lesson</a>
+      </div>
+      <div class="service-card featured reveal">
+        <span class="service-tag">Offline</span>
+        <div class="service-price">Custom <small>pricing</small></div>
+        <p class="service-note" style="opacity:.75;">Offline lessons are available at a custom rate. Contact me to discuss your location, schedule, and learning goals.</p>
+        <ul class="service-list">
+          <li>In-person sessions</li>
+          <li>Location dependent</li>
+          <li>Flexible scheduling</li>
+          <li>Techniques &amp; theory</li>
+          <li>Practice guidance</li>
+          <li>Performance skills</li>
+        </ul>
+        <a href="#contact" class="btn ghost" style="border-color:rgba(247,242,232,.35);color:var(--surface);" data-cursor="button" data-magnetic>Contact Me</a>
+      </div>
+    </div>
+    <div class="instrument-strip reveal">
+      <span class="instrument-strip-label">Available Now</span>
+      <div class="instrument-chips">
+        <span class="instrument-chip">Acoustic Guitar</span>
+        <span class="instrument-chip">Electric Guitar</span>
+        <span class="instrument-chip">Classical Guitar</span>
+        <span class="instrument-chip">Ukulele</span>
+      </div>
+      <span class="instrument-strip-note">More lessons and musical resources coming soon.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LESSON TOPICS / GUITAR JOURNEY ============ -->
+<section id="topics">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Your Guitar Journey</div>
+      <h2>What You'll Learn</h2>
+      <p>A well-rounded path from your very first chord to confident performance — eighteen steps, in order.</p>
+    </div>
+    <div class="journey-track">
+      <div class="journey-line" aria-hidden="true"></div>
+      <div class="topic-grid" id="topic-grid"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY LEARN WITH ME ============ -->
+<section id="why">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Why Learn With Me</div>
+      <h2>More Than Just A Method.</h2>
+    </div>
+    <div class="why-grid" id="why-grid"></div>
+  </div>
+</section>
+
+<div class="string-divider"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path id="string-path-2" class="string-path" d="M0,30 Q300,50 600,30 T1200,30"/></svg></div>
+
+<!-- ============ CLIENTS ============ -->
+<section id="clients">
+  <div class="wrap" style="margin-bottom:44px;">
+    <div class="section-head reveal" style="margin-bottom:0;">
+      <div class="eyebrow">Students &amp; Clients</div>
+      <h2>People I've Taught</h2>
+    </div>
+  </div>
+  <div class="marquee-outer" style="overflow:hidden;">
+    <div class="marquee-track" id="marquee-track"></div>
+  </div>
+</section>
+
+<!-- ============ HAPPY CLIENTS / TESTIMONIALS ============ -->
+<section id="testimonials">
+  <div class="wrap">
+    <div class="section-head reveal" style="margin-left:auto;margin-right:auto;text-align:center;">
+      <div class="eyebrow" style="justify-content:center;">Happy Clients</div>
+      <h2>In Their Own Words</h2>
+    </div>
+    <div class="testi-wrap reveal">
+      <button class="testi-arrow prev" aria-label="Previous testimonial" data-cursor="button">‹</button>
+      <div id="testi-slides"></div>
+      <button class="testi-arrow next" aria-label="Next testimonial" data-cursor="button">›</button>
+      <div class="testi-controls" id="testi-dots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLAY A NOTE (mini interactive) ============ -->
+<section id="playnote">
+  <div class="wrap playnote-grid">
+    <div class="playnote-copy reveal">
+      <div class="eyebrow">Try It Yourself</div>
+      <h2>Play A Note.</h2>
+      <p>Click or tap a string to hear how it feels to play — a tiny taste of what a real lesson sounds like. No sign-up, just strings.</p>
+      <button class="playnote-sound-toggle" id="sound-toggle" type="button" aria-pressed="false" data-cursor="button">
+        <span class="dot"></span>
+        <span id="sound-toggle-label">Sound is off — tap to enable</span>
+      </button>
+      <p class="playnote-hint">Sound is muted by default and only plays after you turn it on.</p>
+    </div>
+    <div class="strings-stage reveal" id="strings-stage">
+      <svg class="strings-fret-dots" viewBox="0 0 400 260" preserveAspectRatio="none" aria-hidden="true">
+        <circle cx="60" cy="30" r="2" fill="var(--accent)" opacity=".3"/>
+        <circle cx="340" cy="30" r="2" fill="var(--accent)" opacity=".3"/>
+        <circle cx="60" cy="230" r="2" fill="var(--accent)" opacity=".3"/>
+        <circle cx="340" cy="230" r="2" fill="var(--accent)" opacity=".3"/>
+      </svg>
+      <div class="strings-list" id="strings-list"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about">
+  <div class="wrap about-hero-grid">
+    <div class="about-3d-stage reveal">
+      <div class="about-3d-ring r2" aria-hidden="true"></div>
+      <div class="about-3d-ring r1" aria-hidden="true"></div>
+      <div class="about-3d-glow" aria-hidden="true"></div>
+      <canvas id="about-guitar-canvas" aria-label="Interactive 3D electric guitar — drag to rotate" data-cursor="drag"></canvas>
+      <div class="about-3d-fallback" id="about-3d-fallback">
+        <svg width="46%" viewBox="0 0 140 300" fill="none">
+          <path d="M70 8c26 0 34 22 32 40-2 14-16 18-14 30 2 10 22 12 22 38 0 24-22 34-40 34s-42-10-42-34c0-26 20-28 22-38 2-12-12-16-14-30-2-18 8-40 34-40Z" fill="#f3e6cf" stroke="#e9dcc0" stroke-width="2"/>
+          <rect x="62" y="150" width="16" height="120" rx="5" fill="#f3e6cf" stroke="#e9dcc0" stroke-width="1.5"/>
+          <rect x="52" y="18" width="36" height="24" rx="4" fill="#2b241d"/>
+        </svg>
+      </div>
+      <div class="about-3d-hint" id="about-3d-hint">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12h6M9 12l2-2M9 12l2 2M15 12l-2-2M15 12l-2 2"/></svg>
+        <span id="about-3d-hint-text">Drag to rotate</span>
+      </div>
+    </div>
+    <div class="about-hero-copy reveal">
+      <div class="eyebrow">About Next Note</div>
+      <h2>More Than Just Guitar Lessons.</h2>
+      <p>Next Note is about learning guitar the practical way — building confidence, understanding music, and playing songs you actually love, through chords, tabs, rhythm and technique.</p>
+      <p>Learning guitar should not feel like memorizing endless rules. The goal is to understand the instrument, build confidence, and enjoy the process — one note at a time.</p>
+      <div class="about-feature-grid" id="about-feature-grid"></div>
+    </div>
+  </div>
+
+  <div class="wrap about-grid about-me-row">
+    <div class="about-copy reveal">
+      <div class="eyebrow">About Me</div>
+      <h2 id="about-me-name">Meet Your Tutor</h2>
+      <p id="about-bio">A passionate and experienced music educator with over 5+ years of experience in the music industry and teaching field. With a strong academic background in music and a Master's degree in Music from MD University.</p>
+      <div class="about-facts">
+        <div class="about-fact"><h5>Teaching Approach</h5><p>It's believes that every student learns differently, which is why his lessons are adapted according to the student's age, experience level, musical interests, and personal goals</p></div>
+        <div class="about-fact"><h5>Music Interests</h5><p>- Guitar fundamentals and proper playing technique
+<br/> - Basic to advanced chords and chord transitions
+<br/> - Strumming patterns and rhythm development
+<br/> - Fingerstyle guitar techniques
+<br/> - Popular songs and song accompaniment</p></div>
+        <div class="about-fact"><h5>Experience</h5><p>With 5+ years of experience in music and guitar education, Hitesh has developed practical experience in teaching students with different learning levels and musical goals.</p></div>
+        <div class="about-fact"><h5>Formats</h5><p>Personalized one-to-one online guitar lessons are available for students from anywhere &amp; Offline lessons are available for students in Faridabad, Delhi, Gurgaon, Noida, Haryana (selected locations)</p></div>
+      </div>
+    </div>
+    <div class="about-visual reveal" id="about-visual">
+      <canvas id="about-canvas"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- ============ UPCOMING ============ -->
+<section id="upcoming">
+  <div class="notes-field" id="notes-field"></div>
+  <div class="string-glow"></div>
+  <div class="wrap upcoming-inner">
+    <div class="upcoming-eyebrow">Something Big Is Coming</div>
+    <h2>The next chapter<br><span>is already being tuned.</span></h2>
+    <p class="upcoming-sub">New lessons. New content. New sounds. Stay tuned.</p>
+    <div class="upcoming-cards" id="upcoming-cards"></div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head reveal" style="margin-left:auto;margin-right:auto;text-align:center;">
+      <div class="eyebrow" style="justify-content:center;">Questions</div>
+      <h2>Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-list reveal" id="faq-list"></div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact">
+  <div class="wrap contact-grid">
+    <div class="contact-copy reveal">
+      <div class="eyebrow">Contact</div>
+      <h2>Let's Make Some Music.</h2>
+      <p class="lead">Send a message and I'll get back to you to sort out lesson format, timing and everything else.</p>
+      <div class="contact-direct" id="contact-direct"></div>
+      <div class="social-row" id="social-row"></div>
+    </div>
+    <form id="lesson-form" class="reveal" novalidate>
+      <div class="field">
+        <label for="f-name">Name *</label>
+        <input type="text" id="f-name" name="name" required>
+        <span class="field-error">Please enter your name.</span>
+      </div>
+      <div class="field">
+        <label for="f-email">Email *</label>
+        <input type="email" id="f-email" name="email" required>
+        <span class="field-error">Please enter a valid email.</span>
+      </div>
+      <div class="field">
+        <label for="f-phone">Phone Number</label>
+        <input type="tel" id="f-phone" name="phone">
+      </div>
+      <div class="field">
+        <label for="f-type">Online / Offline *</label>
+        <select id="f-type" name="lesson_mode" required>
+          <option value="">Select</option>
+          <option value="Online">Online</option>
+          <option value="Offline">Offline</option>
+        </select>
+        <span class="field-error">Please choose a lesson format.</span>
+      </div>
+      <div class="field">
+        <label for="f-level">Skill Level</label>
+        <select id="f-level" name="skill_level">
+          <option value="">Select</option>
+          <option>Complete Beginner</option>
+          <option>Beginner</option>
+          <option>Intermediate</option>
+          <option>Advanced</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="f-time">Preferred Lesson Time</label>
+        <input type="text" id="f-time" name="preferred_time" placeholder="e.g. Weekday evenings">
+      </div>
+      <div class="field full">
+        <label for="f-location">Location (for offline lessons)</label>
+        <input type="text" id="f-location" name="location">
+      </div>
+      <div class="field full">
+        <label for="f-social">YouTube / Instagram Profile</label>
+        <input type="text" id="f-social" name="profile_link" placeholder="Optional">
+      </div>
+      <div class="field full">
+        <label for="f-message">Message *</label>
+        <textarea id="f-message" name="message" required></textarea>
+        <span class="field-error">Please add a short message.</span>
+      </div>
+      <div class="form-status" id="form-status"></div>
+      <button type="submit" class="btn btn-cta" id="submit-btn" data-cursor="button">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section id="final-cta">
+  <div class="wrap">
+    <h2>Ready To Play Your First Note?</h2>
+    <p>Start learning guitar with clear guidance, practical lessons and affordable pricing — one note at a time.</p>
+    <div class="cta-row">
+      <a href="#contact" class="btn" data-cursor="button" data-magnetic>Book Your First Lesson</a>
+      <a href="#faq" class="btn ghost" data-cursor="button" data-magnetic>Ask a Question</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo" id="footer-logo">Next Note</div>
+        <p style="max-width:300px;font-size:13.5px;margin-top:10px;">Guitar Lessons Online &amp; Offline.</p>
+        <p style="max-width:300px;font-size:12.5px;margin-top:8px;color:rgba(247,242,232,.55);">Chords • Songs • Techniques • Tabs • Strumming • Fingerstyle • Scales • Music Theory</p>
+        <p style="max-width:300px;font-size:12.5px;margin-top:6px;color:rgba(247,242,232,.55);">Acoustic Guitar • Electric Guitar • Classical Guitar • Ukulele</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Navigate</h5>
+          <a href="#services">Services</a>
+          <a href="#clients">Clients</a>
+          <a href="#about">About</a>
+          <a href="#topics">Curriculum</a>
+          <a href="#faq" id="footer-faq-link">FAQ</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <a href="#contact" id="footer-email">Email</a>
+          <a href="#contact" id="footer-phone">Phone</a>
+        </div>
+        <div class="footer-col">
+          <h5>Follow</h5>
+          <a href="#" id="footer-yt">YouTube</a>
+          <a href="#" id="footer-ig">Instagram</a>
+          <a href="#" id="footer-fb">Facebook</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> <span class="footer-year-name">Next Note</span>. All rights reserved.</span>
+      <span>Affordable Guitar Lessons — Online &amp; Offline</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ LIBRARIES ============ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+
+<script>
+/* =======================================================================
+   38. CENTRAL CONFIGURATION — edit everything about the site from here.
+   ======================================================================= */
+const siteConfig = {
+  brandName: "Next Note",
+  tutorName: "Hitesh Bawari",              // shown in the About Me heading
+  title: "Guitar Tutor & Music Instructor",
+  email: "hiteshbawari@gmail.com",
+  phone: "9667803323",                           // e.g. "+91 90000 00000"
+  location: "Haryana,Faridabad,Delhi,Noida,Gurugram,",                        // e.g. "Delhi, India"
+
+  pricing: {
+    onlineINR: 350,
+    onlineUSD: 4,                      // clean rounded value — avoid ugly decimals
+    offline: "Custom Rate"
+  },
+
+  web3formsAccessKey: "b6a6d21c-5e81-425c-af8e-ced363773e74",              // paste your Web3Forms Access Key here
+
+  social: {
+    instagram: "https://www.instagram.com/next_note_?igsi=dXM2dGppMW9tcjNj",
+    youtube: "",
+    linkedin: "",
+    whatsapp: "9667803323",
+    facebook: ""
+  },
+
+  // Provide a .glb / .gltf URL to replace the procedural fallback character.
+  threeModel: ""
+};
+const GUITAR_MODEL_URL = siteConfig.threeModel;
+const WEB3FORMS_ACCESS_KEY = siteConfig.web3formsAccessKey;
+const CONTACT_EMAIL = siteConfig.email;
+const CONTACT_PHONE = siteConfig.phone;
+const socialLinks = siteConfig.social;
+
+document.getElementById('nav-logo-text').textContent = siteConfig.brandName;
+document.getElementById('footer-logo').textContent = siteConfig.brandName;
+document.querySelectorAll('.footer-year-name').forEach(el=>el.textContent = siteConfig.brandName);
+const aboutMeNameEl = document.getElementById('about-me-name');
+if(aboutMeNameEl) aboutMeNameEl.textContent = siteConfig.tutorName === "YOUR NAME" ? "Meet Your Tutor" : `Meet ${siteConfig.tutorName}`;
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* =======================================================================
+   CONTENT DATA
+   ======================================================================= */
+const lessons = [
+  {n:'01',title:'Guitar Basics',tier:'Beginner'},{n:'02',title:'Chords',tier:'Beginner'},{n:'03',title:'Barre Chords',tier:'Intermediate'},
+  {n:'04',title:'Power Chords',tier:'Beginner'},{n:'05',title:'Strumming Patterns',tier:'Beginner'},{n:'06',title:'Fingerstyle',tier:'Intermediate'},
+  {n:'07',title:'Scales',tier:'Intermediate'},{n:'08',title:'Pentatonic Scales',tier:'Intermediate'},{n:'09',title:'Rhythm',tier:'Beginner'},
+  {n:'10',title:'Music Theory',tier:'Intermediate'},{n:'11',title:'Tabs',tier:'Beginner'},{n:'12',title:'Song Learning',tier:'Beginner'},
+  {n:'13',title:'Lead Guitar',tier:'Advanced'},{n:'14',title:'Improvisation',tier:'Advanced'},{n:'15',title:'Rock Guitar',tier:'Intermediate'},
+  {n:'16',title:'Blues Basics',tier:'Intermediate'},{n:'17',title:'Jazz Basics',tier:'Advanced'},{n:'18',title:'Performance Skills',tier:'Advanced'}
+];
+
+const whyCards = [
+  {title:'Personalized Learning',text:'Lessons designed around your current level and goals.'},
+  {title:'Learn Real Songs',text:'Apply concepts to songs instead of only studying theory.'},
+  {title:'Beginner Friendly',text:'No previous experience required.'},
+  {title:'Practical Practice',text:'Simple practice strategies that actually fit your routine.'},
+  {title:'Flexible Learning',text:'Online and offline options.'},
+  {title:'Progress Focused',text:'Build skills step-by-step.'}
+];
+
+const aboutFeatures = [
+  {icon:'chord', title:'Chords', text:'Learn essential chords and progressions.'},
+  {icon:'song', title:'Songs', text:'Learn to play songs step by step.'},
+  {icon:'technique', title:'Techniques', text:'Practice strumming, picking, rhythm and more.'},
+  {icon:'tabs', title:'Tabs', text:'Understand and use guitar tabs.'},
+  {icon:'basics', title:'Music Basics', text:'Build practical musical understanding.'}
+];
+
+// Sample placeholders — replace with real students/clients.
+const clients = [
+  { name:"Aarav Sharma", image:"", lessonType:"Offline Student · Delhi", description:"My teacher explains every chord and technique in a very simple way, which made it much easier for me to learn as a beginner", link:"" },
+  { name:"Ananya Verma", image:"", lessonType:"Offline Student · Faridabad", description:"I was initially worried about learning through online classes. However, the lessons are explained very clearly, and I receive proper guidance during every session.", link:"" },
+  { name:"Vivaan Bhatia", image:"", lessonType:"Offline Student · Faridabad, Haryana", description:"The teacher is patient and explains everything step by step. I have learned several chords and songs that I can now play for my friends and family.", link:"" },
+  { name:"Meher Kapoor", image:"", lessonType:"Online Student · Kanpur, Lucknow", description:"I joined because I wanted to learn my favourite songs, but I have learned much more than I expected. The lessons helped me understand chords, rhythm, strumming, and how to practice properly.", link:"" },
+  { name:"Arjun Malik", image:"", lessonType:"Online Student · Gurugram, Haryana", description:"The online guitar lessons are very convenient and easy to follow. Even though the classes are online, the teacher pays attention to technique and explains mistakes clearly.", link:"" }
+];
+
+// Do not fabricate — replace text with a real testimonial before publishing.
+const testimonials = [
+  { name:"Kavya Singh", role:"Offline Student · Faridabad, Haryana", image:"", text:"I started with the basics and gradually learned chords, rhythm patterns, and songs." },
+  { name:"Rohan Yadav", role:"Online Student · Delhi", image:"", text:"Now I can play different chord progressions, follow strumming patterns, and perform several songs." },
+  { name:"Ishita Khanna", role:"Online Student · Noida, UP", image:"", text:"The teacher explains every lesson patiently and makes sure I understand before moving to the next topic." }
+];
+
+const faqs = [
+  { q:"How much does an online guitar lesson cost?", a:"Online lessons start from ₹350 (about $4) per session. The final rate can vary a little depending on lesson format and requirements — you can confirm exact pricing when you get in touch." },
+  { q:"Do you teach complete beginners?", a:"Yes — most students start with zero experience. Lessons begin with the basics: how to hold the guitar, tuning, and your first chords." },
+  { q:"Do you teach acoustic guitar?", a:"Yes, acoustic guitar is one of the core instruments taught, both online and offline." },
+  { q:"Do you teach electric guitar?", a:"Yes, electric guitar lessons are available, covering technique, tone, and lead playing." },
+  { q:"Do you teach classical guitar?", a:"Yes, classical guitar lessons are available for students interested in that style and technique." },
+  { q:"Do you teach ukulele?", a:"Yes, ukulele lessons are available for beginners and returning players." },
+  { q:"Are offline lessons available?", a:"Yes, in-person lessons are available in Faridabad, Delhi, Gurugram, Noida and nearby areas in Haryana, at a custom rate depending on your location and schedule." },
+  { q:"How long is one lesson?", a:"Session length is agreed with each student based on their level and goals — reach out and this can be confirmed before your first class." },
+  { q:"Can I learn songs?", a:"Yes — learning real songs is a core part of the curriculum, alongside chords, strumming and technique." },
+  { q:"Do you teach music theory?", a:"Yes, practical music theory is covered as part of the intermediate curriculum." },
+  { q:"Do you teach pentatonic scales?", a:"Yes, pentatonic scales are covered as part of the intermediate lead-guitar curriculum." },
+  { q:"Do you teach jazz guitar?", a:"Yes, jazz basics are introduced at the advanced stage for students who want to explore the style." },
+  { q:"Can I learn fingerstyle?", a:"Yes, fingerstyle technique is part of the curriculum for students who want a softer, plucked sound." },
+  { q:"What equipment do I need for online lessons?", a:"A guitar, a stable internet connection, and a device with a camera and microphone — that's all you need to get started." }
+];
+
+/* =======================================================================
+   LOADER
+   ======================================================================= */
+window.addEventListener('load', ()=>{
+  setTimeout(()=>{ document.getElementById('loader').classList.add('hidden'); startEntrance(); }, 550);
+});
+
+/* =======================================================================
+   RENDER: LESSON TOPICS / GUITAR JOURNEY
+   ======================================================================= */
+const topicGrid = document.getElementById('topic-grid');
+lessons.forEach(l=>{
+  const el = document.createElement('div');
+  el.className='topic-card reveal';
+  el.innerHTML = `<div class="topic-num">${l.n}</div><h4>${l.title}</h4><span class="topic-tier">${l.tier}</span>`;
+  topicGrid.appendChild(el);
+});
+
+/* RENDER: WHY GRID */
+const whyGrid = document.getElementById('why-grid');
+whyCards.forEach(c=>{
+  const el = document.createElement('div');
+  el.className='why-card reveal';
+  el.innerHTML = `<h4>${c.title}</h4><p>${c.text}</p>`;
+  whyGrid.appendChild(el);
+});
+
+/* RENDER: ABOUT FEATURE HIGHLIGHTS */
+function aboutFeatureIcon(type){
+  const icons = {
+    chord: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="2"/><circle cx="9" cy="9" r="1.1" fill="currentColor" stroke="none"/><circle cx="15" cy="9" r="1.1" fill="currentColor" stroke="none"/><circle cx="9" cy="15" r="1.1" fill="currentColor" stroke="none"/></svg>',
+    song: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg>',
+    technique: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12c2-4 4-4 6 0s4 4 6 0 4-4 6 0"/></svg>',
+    tabs: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="14" y2="17"/></svg>',
+    basics: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8" cy="17" r="3"/><path d="M11 17V4l9 2"/></svg>'
+  };
+  return icons[type] || icons.basics;
+}
+const aboutFeatureGrid = document.getElementById('about-feature-grid');
+if(aboutFeatureGrid){
+  aboutFeatures.forEach(f=>{
+    const el = document.createElement('div');
+    el.className='about-feature-card reveal';
+    el.innerHTML = `<div class="about-feature-icon">${aboutFeatureIcon(f.icon)}</div><h5>${f.title}</h5><p>${f.text}</p>`;
+    aboutFeatureGrid.appendChild(el);
+  });
+}
+
+/* =======================================================================
+   RENDER: CLIENTS MARQUEE
+   ======================================================================= */
+const marqueeTrack = document.getElementById('marquee-track');
+function buildClientCard(c){
+  const el = document.createElement('div');
+  el.className='client-card';
+  const initial = c.name.trim().charAt(0) || '?';
+  el.innerHTML = `
+    <div class="client-avatar">${c.image? `<img src="${c.image}" style="width:100%;height:100%;border-radius:50%;object-fit:cover;">` : initial}</div>
+    <h4>${c.name}</h4>
+    <div class="service-tag">${c.lessonType}</div>
+    <p>${c.description}</p>`;
+  return el;
+}
+[...clients, ...clients].forEach(c=> marqueeTrack.appendChild(buildClientCard(c)));
+
+/* =======================================================================
+   RENDER: TESTIMONIALS SLIDER
+   ======================================================================= */
+const testiSlidesEl = document.getElementById('testi-slides');
+const testiDotsEl = document.getElementById('testi-dots');
+let testiIndex = 0;
+let testiTimer = null;
+
+testimonials.forEach((t,i)=>{
+  const s = document.createElement('div');
+  s.className='testi-slide'+(i===0?' active':'');
+  s.innerHTML = `<p class="quote">"${t.text}"</p><div class="name">${t.name}</div><div class="role">${t.role}</div>`;
+  testiSlidesEl.appendChild(s);
+
+  const dot = document.createElement('button');
+  dot.className='testi-dot'+(i===0?' active':'');
+  dot.dataset.cursor='button';
+  dot.addEventListener('click', ()=> showTesti(i));
+  testiDotsEl.appendChild(dot);
+});
+
+function showTesti(i){
+  testiIndex = (i+testimonials.length)%testimonials.length;
+  document.querySelectorAll('.testi-slide').forEach((s,idx)=>s.classList.toggle('active', idx===testiIndex));
+  document.querySelectorAll('.testi-dot').forEach((d,idx)=>d.classList.toggle('active', idx===testiIndex));
+}
+document.querySelector('.testi-arrow.prev').addEventListener('click', ()=>{ showTesti(testiIndex-1); resetTestiAuto(); });
+document.querySelector('.testi-arrow.next').addEventListener('click', ()=>{ showTesti(testiIndex+1); resetTestiAuto(); });
+
+function startTestiAuto(){ testiTimer = setInterval(()=> showTesti(testiIndex+1), 5000); }
+function resetTestiAuto(){ clearInterval(testiTimer); startTestiAuto(); }
+startTestiAuto();
+const testiWrap = document.querySelector('.testi-wrap');
+testiWrap.addEventListener('mouseenter', ()=> clearInterval(testiTimer));
+testiWrap.addEventListener('mouseleave', startTestiAuto);
+
+/* =======================================================================
+   RENDER + WIRE: PLAY A NOTE MINI GAME
+   Six clickable/tappable "strings". Muted by default; sound only plays
+   after the visitor explicitly enables it (Web Audio, no autoplay, no
+   external audio files). Visual pluck + floating note is always on.
+   ======================================================================= */
+const stringNotes = [
+  { note:'E', freq:329.63 },
+  { note:'B', freq:246.94 },
+  { note:'G', freq:196.00 },
+  { note:'D', freq:146.83 },
+  { note:'A', freq:110.00 },
+  { note:'E', freq:82.41 }
+];
+const stringsListEl = document.getElementById('strings-list');
+const stringsStageEl = document.getElementById('strings-stage');
+stringNotes.forEach((s,i)=>{
+  const row = document.createElement('div');
+  row.style.position = 'relative';
+  row.innerHTML = `<span class="string-note-label">${s.note}</span><div class="guitar-string" data-freq="${s.freq}" tabindex="0" role="button" aria-label="Pluck the ${s.note} string"></div>`;
+  stringsListEl.appendChild(row);
+});
+
+let audioCtx = null;
+let soundEnabled = false;
+const soundToggle = document.getElementById('sound-toggle');
+const soundToggleLabel = document.getElementById('sound-toggle-label');
+soundToggle.addEventListener('click', ()=>{
+  soundEnabled = !soundEnabled;
+  soundToggle.setAttribute('aria-pressed', String(soundEnabled));
+  soundToggleLabel.textContent = soundEnabled ? 'Sound is on — tap to mute' : 'Sound is off — tap to enable';
+  if(soundEnabled && !audioCtx){
+    try{ audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }catch(e){ soundEnabled=false; }
+  }
+  if(audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+});
+
+function playStringTone(freq){
+  if(!soundEnabled || !audioCtx) return;
+  const now = audioCtx.currentTime;
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+  osc.type = 'triangle';
+  osc.frequency.setValueAtTime(freq, now);
+  gain.gain.setValueAtTime(0.0001, now);
+  gain.gain.exponentialRampToValueAtTime(0.22, now+0.015);
+  gain.gain.exponentialRampToValueAtTime(0.0001, now+0.9);
+  osc.connect(gain).connect(audioCtx.destination);
+  osc.start(now);
+  osc.stop(now+0.95);
+}
+
+function pluckString(el, freq){
+  el.classList.remove('plucked');
+  void el.offsetWidth; // restart animation
+  el.classList.add('plucked');
+  playStringTone(freq);
+
+  const rect = el.getBoundingClientRect();
+  const stageRect = stringsStageEl.getBoundingClientRect();
+  const burst = document.createElement('div');
+  burst.className = 'pluck-burst';
+  burst.textContent = '♪';
+  burst.style.left = (rect.left - stageRect.left + rect.width/2) + 'px';
+  burst.style.top = (rect.top - stageRect.top) + 'px';
+  stringsStageEl.appendChild(burst);
+  setTimeout(()=> burst.remove(), 850);
+}
+
+document.querySelectorAll('.guitar-string').forEach(el=>{
+  const freq = parseFloat(el.dataset.freq);
+  el.addEventListener('click', ()=> pluckString(el, freq));
+  el.addEventListener('keydown', (e)=>{
+    if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); pluckString(el, freq); }
+  });
+});
+
+/* =======================================================================
+   RENDER: UPCOMING CARDS + FLOATING NOTES
+   ======================================================================= */
+const upcomingLabels = ["New Guitar Lessons","Exclusive Tutorials","New Performance Content","Practice Resources","Something You Don't Want To Miss"];
+const upcomingCardsEl = document.getElementById('upcoming-cards');
+upcomingLabels.forEach(label=>{
+  const el = document.createElement('div');
+  el.className='upcoming-card';
+  el.textContent = label;
+  upcomingCardsEl.appendChild(el);
+});
+
+const notesField = document.getElementById('notes-field');
+const noteGlyphs = ['♪','♫','♬'];
+for(let i=0;i<10;i++){
+  const n = document.createElement('div');
+  n.className='floating-note';
+  n.textContent = noteGlyphs[i % noteGlyphs.length];
+  n.style.left = Math.random()*95+'%';
+  n.style.top = Math.random()*90+'%';
+  notesField.appendChild(n);
+}
+
+/* =======================================================================
+   RENDER: FAQ ACCORDION
+   ======================================================================= */
+const faqListEl = document.getElementById('faq-list');
+faqs.forEach((f,i)=>{
+  const item = document.createElement('div');
+  item.className = 'faq-item';
+  item.innerHTML = `
+    <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a-${i}" data-cursor="button">
+      <span>${f.q}</span>
+      <span class="faq-plus" aria-hidden="true"></span>
+    </button>
+    <div class="faq-a" id="faq-a-${i}">
+      <p>${f.a}</p>
+    </div>`;
+  faqListEl.appendChild(item);
+
+  const btn = item.querySelector('.faq-q');
+  const answer = item.querySelector('.faq-a');
+  btn.addEventListener('click', ()=>{
+    const isOpen = item.classList.contains('open');
+    // close any other open item for a clean accordion feel
+    faqListEl.querySelectorAll('.faq-item.open').forEach(openItem=>{
+      if(openItem !== item){
+        openItem.classList.remove('open');
+        openItem.querySelector('.faq-q').setAttribute('aria-expanded','false');
+        openItem.querySelector('.faq-a').style.maxHeight = null;
+      }
+    });
+    item.classList.toggle('open', !isOpen);
+    btn.setAttribute('aria-expanded', String(!isOpen));
+    answer.style.maxHeight = !isOpen ? answer.scrollHeight+'px' : null;
+  });
+});
+
+/* =======================================================================
+   RENDER: CONTACT DIRECT + SOCIAL + FOOTER
+   ======================================================================= */
+// Sync the hero price badge, wherever it's shown, with the central pricing config.
+document.querySelectorAll('.price-badge-amount').forEach(el=>{
+  el.innerHTML = `₹${siteConfig.pricing.onlineINR}<small> / ~$${siteConfig.pricing.onlineUSD}</small>`;
+});
+
+const contactDirect = document.getElementById('contact-direct');
+contactDirect.innerHTML = `
+  <a href="mailto:${CONTACT_EMAIL || '#'}" data-cursor="button">✉️ Email Me ${CONTACT_EMAIL? `— ${CONTACT_EMAIL}`:'(add email in siteConfig)'}</a>
+  <a href="${CONTACT_PHONE? 'https://wa.me/'+CONTACT_PHONE.replace(/[^0-9]/g,'') : '#'}" data-cursor="button">💬 Call / WhatsApp ${CONTACT_PHONE? `— ${CONTACT_PHONE}`:'(add phone in siteConfig)'}</a>
+`;
+document.getElementById('footer-email').textContent = CONTACT_EMAIL || 'Email (not set)';
+document.getElementById('footer-email').href = CONTACT_EMAIL? `mailto:${CONTACT_EMAIL}` : '#';
+document.getElementById('footer-phone').textContent = CONTACT_PHONE || 'Phone (not set)';
+document.getElementById('footer-phone').href = CONTACT_PHONE? `tel:${CONTACT_PHONE}` : '#';
+
+// Treat empty strings and "PASTE_..." placeholder markers as "not yet configured".
+function isConfigured(val){ return !!val && !/^PASTE_/i.test(val); }
+function igUrl(handle){ return handle.startsWith('http') ? handle : `https://instagram.com/${handle.replace(/^@/,'')}`; }
+
+function iconBtn(svg, href){
+  const a = document.createElement('a');
+  a.className='icon-btn'; a.href = href || '#'; a.target='_blank'; a.rel='noopener';
+  a.dataset.cursor='button';
+  a.innerHTML = svg;
+  return a;
+}
+const socialRow = document.getElementById('social-row');
+const ytSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.6-.5-5.3c-.3-1-1-1.7-2-2C18.7 4.2 12 4.2 12 4.2s-6.7 0-8.5.5c-1 .3-1.7 1-2 2C1 8.4 1 12 1 12s0 3.6.5 5.3c.3 1 1 1.7 2 2 1.8.5 8.5.5 8.5.5s6.7 0 8.5-.5c1-.3 1.7-1 2-2 .5-1.7.5-5.3.5-5.3zM9.8 15.5V8.5l6 3.5-6 3.5z"/></svg>`;
+const igSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c2.7 0 3.1 0 4.1.1 1 .1 1.7.2 2.3.5.6.2 1.1.6 1.6 1.1.5.5.8 1 1.1 1.6.2.6.4 1.3.5 2.3.1 1 .1 1.4.1 4.1s0 3.1-.1 4.1c-.1 1-.2 1.7-.5 2.3-.2.6-.6 1.1-1.1 1.6-.5.5-1 .8-1.6 1.1-.6.2-1.3.4-2.3.5-1 .1-1.4.1-4.1.1s-3.1 0-4.1-.1c-1-.1-1.7-.2-2.3-.5-.6-.2-1.1-.6-1.6-1.1-.5-.5-.8-1-1.1-1.6-.2-.6-.4-1.3-.5-2.3C2 15.1 2 14.7 2 12s0-3.1.1-4.1c.1-1 .2-1.7.5-2.3.2-.6.6-1.1 1.1-1.6.5-.5 1-.8 1.6-1.1.6-.2 1.3-.4 2.3-.5C8.9 2 9.3 2 12 2zm0 1.8c-2.6 0-3 0-4 .1-.9 0-1.4.2-1.7.3-.4.2-.7.3-1 .6-.3.3-.5.6-.6 1-.1.3-.3.8-.3 1.7-.1 1-.1 1.4-.1 4s0 3 .1 4c0 .9.2 1.4.3 1.7.2.4.3.7.6 1 .3.3.6.5 1 .6.3.1.8.3 1.7.3 1 .1 1.4.1 4 .1s3 0 4-.1c.9 0 1.4-.2 1.7-.3.4-.2.7-.3 1-.6.3-.3.5-.6.6-1 .1-.3.3-.8.3-1.7.1-1 .1-1.4.1-4s0-3-.1-4c0-.9-.2-1.4-.3-1.7-.2-.4-.3-.7-.6-1-.3-.3-.6-.5-1-.6-.3-.1-.8-.3-1.7-.3-1-.1-1.4-.1-4-.1zm0 3.5a4.7 4.7 0 110 9.4 4.7 4.7 0 010-9.4zm0 1.8a2.9 2.9 0 100 5.8 2.9 2.9 0 000-5.8zm5-2a1.1 1.1 0 110 2.2 1.1 1.1 0 010-2.2z"/></svg>`;
+const fbSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V8c0-.9.2-1.5 1.6-1.5H17V3.7c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.2v2.1H8v3.1h2.6V21h2.9z"/></svg>`;
+const liSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3V9zm7 0h3.8v1.7h.05c.53-1 1.83-2 3.77-2 4 0 4.75 2.6 4.75 6V21h-4v-5.3c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21h-4V9z"/></svg>`;
+const waSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17 14.2c-.3-.1-1.6-.8-1.9-.9-.2-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.5.1-.3-.1-1.2-.4-2.2-1.4-.8-.7-1.4-1.6-1.5-1.9-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.2-.4.1-.2 0-.4 0-.5C10.1 9 9.7 8 9.5 7.6c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 1.9 3 4.7 4.1.6.3 1.1.4 1.5.6.7.2 1.2.2 1.7.1.5-.1 1.6-.7 1.8-1.3.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3zM12 2a10 10 0 00-8.6 15L2 22l5.1-1.3A10 10 0 1012 2z"/></svg>`;
+if(isConfigured(socialLinks.youtube)) socialRow.appendChild(iconBtn(ytSvg, socialLinks.youtube));
+if(isConfigured(socialLinks.instagram)) socialRow.appendChild(iconBtn(igSvg, igUrl(socialLinks.instagram)));
+if(isConfigured(socialLinks.linkedin)) socialRow.appendChild(iconBtn(liSvg, socialLinks.linkedin));
+if(isConfigured(socialLinks.whatsapp)) socialRow.appendChild(iconBtn(waSvg, `https://wa.me/${socialLinks.whatsapp.replace(/[^0-9]/g,'')}`));
+if(isConfigured(socialLinks.facebook)) socialRow.appendChild(iconBtn(fbSvg, socialLinks.facebook));
+document.getElementById('footer-yt').href = socialLinks.youtube || '#';
+document.getElementById('footer-ig').href = isConfigured(socialLinks.instagram) ? igUrl(socialLinks.instagram) : '#';
+document.getElementById('footer-fb').href = socialLinks.facebook || '#';
+
+/* =======================================================================
+   NAVBAR SCROLL STATE
+   ======================================================================= */
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', ()=>{
+  navbar.classList.toggle('compact', window.scrollY > 60);
+}, {passive:true});
+
+/* Active nav state — highlights the current section while scrolling */
+const navAnchorLinks = document.querySelectorAll('nav.links a[href^="#"]');
+const navSections = Array.from(navAnchorLinks).map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window && navSections.length){
+  const navObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        const id = '#'+entry.target.id;
+        navAnchorLinks.forEach(a=> a.classList.toggle('active', a.getAttribute('href')===id));
+      }
+    });
+  }, { rootMargin:'-45% 0px -50% 0px', threshold:0 });
+  navSections.forEach(sec => navObserver.observe(sec));
+}
+
+/* =======================================================================
+   MOBILE MENU
+   ======================================================================= */
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+const mobileMenuBackdrop = document.getElementById('mobile-menu-backdrop');
+const DESKTOP_BREAKPOINT = 1180; // keep in sync with the CSS breakpoint above
+
+function openMobileMenu(){
+  mobileMenu.classList.add('open');
+  mobileMenuBackdrop.classList.add('open');
+  hamburger.classList.add('open');
+  hamburger.setAttribute('aria-expanded', true);
+}
+function closeMobileMenu(){
+  mobileMenu.classList.remove('open');
+  mobileMenuBackdrop.classList.remove('open');
+  hamburger.classList.remove('open');
+  hamburger.setAttribute('aria-expanded', false);
+}
+
+hamburger.addEventListener('click', ()=>{
+  if(mobileMenu.classList.contains('open')){ closeMobileMenu(); } else { openMobileMenu(); }
+});
+mobileMenuBackdrop.addEventListener('click', closeMobileMenu);
+document.querySelectorAll('.mm-link').forEach(a=> a.addEventListener('click', closeMobileMenu));
+
+// If the mobile menu is open and the viewport is resized back to desktop
+// width, force it closed rather than letting it linger over the desktop nav.
+let resizeTimer = null;
+window.addEventListener('resize', ()=>{
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(()=>{
+    if(window.innerWidth > DESKTOP_BREAKPOINT && mobileMenu.classList.contains('open')){
+      closeMobileMenu();
+    }
+  }, 120);
+});
+
+/* =======================================================================
+   SCROLL PROGRESS (guitar pick sliding on a wire)
+   ======================================================================= */
+const progressFill = document.getElementById('scroll-progress-fill');
+const progressPick = document.getElementById('scroll-progress-pick');
+window.addEventListener('scroll', ()=>{
+  const h = document.documentElement;
+  const pct = (h.scrollTop)/(h.scrollHeight-h.clientHeight) * 100;
+  progressFill.style.width = pct+'%';
+  progressPick.style.left = pct+'%';
+}, {passive:true});
+
+/* =======================================================================
+   CUSTOM CURSOR (desktop / mouse only) + MAGNETIC BUTTONS
+   Disabled automatically on touch devices via CSS + a pointer check.
+   ======================================================================= */
+(function initCustomCursor(){
+  const isTouch = window.matchMedia('(hover:none), (pointer:coarse)').matches;
+  if(isTouch) return;
+  const cursor = document.getElementById('custom-cursor');
+  document.body.classList.add('custom-cursor-active');
+  let cx=window.innerWidth/2, cy=window.innerHeight/2, tx=cx, ty=cy;
+
+  window.addEventListener('mousemove', e=>{
+    tx = e.clientX; ty = e.clientY;
+    cursor.classList.remove('hidden-cursor');
+  });
+  document.addEventListener('mouseleave', ()=> cursor.classList.add('hidden-cursor'));
+
+  function raf(){
+    cx += (tx-cx)*0.22; cy += (ty-cy)*0.22;
+    cursor.style.transform = `translate(${cx}px, ${cy}px) translate(-50%,-50%)`;
+    requestAnimationFrame(raf);
+  }
+  raf();
+
+  // The custom cursor skips the navbar entirely — it hides there and the
+  // browser's normal pointer takes over (see the CSS override above).
+  document.querySelectorAll('a, button, [data-cursor="button"], .faq-q, .guitar-string, input, select, textarea').forEach(el=>{
+    if(el.closest('#navbar, #mobile-menu')) return;
+    el.addEventListener('mouseenter', ()=> cursor.classList.add('hovering'));
+    el.addEventListener('mouseleave', ()=> cursor.classList.remove('hovering'));
+  });
+  document.querySelectorAll('[data-cursor="drag"]').forEach(el=>{
+    el.addEventListener('mouseenter', ()=> cursor.classList.add('on-3d'));
+    el.addEventListener('mouseleave', ()=> cursor.classList.remove('on-3d'));
+  });
+  document.querySelectorAll('#navbar, #mobile-menu').forEach(el=>{
+    el.addEventListener('mouseenter', ()=> cursor.classList.add('hidden-cursor'));
+    el.addEventListener('mouseleave', ()=> cursor.classList.remove('hidden-cursor'));
+  });
+
+  // Magnetic buttons: nudge toward the cursor within a small radius.
+  document.querySelectorAll('[data-magnetic]').forEach(btn=>{
+    btn.addEventListener('mousemove', e=>{
+      const r = btn.getBoundingClientRect();
+      const mx = e.clientX - (r.left + r.width/2);
+      const my = e.clientY - (r.top + r.height/2);
+      gsap.to(btn, {x: mx*0.25, y: my*0.35, duration:.4, ease:'power3.out'});
+    });
+    btn.addEventListener('mouseleave', ()=>{
+      gsap.to(btn, {x:0, y:0, duration:.5, ease:'elastic.out(1,0.4)'});
+    });
+  });
+})();
+
+/* =======================================================================
+   FORM VALIDATION + WEB3FORMS SUBMISSION
+   ======================================================================= */
+const form = document.getElementById('lesson-form');
+const submitBtn = document.getElementById('submit-btn');
+const formStatus = document.getElementById('form-status');
+
+function setFieldValidity(el, valid){
+  const field = el.closest('.field');
+  field.classList.toggle('invalid', !valid);
+}
+function validateForm(){
+  let valid = true;
+  const name = document.getElementById('f-name');
+  const email = document.getElementById('f-email');
+  const mode = document.getElementById('f-type');
+  const message = document.getElementById('f-message');
+
+  const nameOk = name.value.trim().length>0;
+  setFieldValidity(name, nameOk); if(!nameOk) valid=false;
+
+  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
+  setFieldValidity(email, emailOk); if(!emailOk) valid=false;
+
+  const modeOk = mode.value.trim().length>0;
+  setFieldValidity(mode, modeOk); if(!modeOk) valid=false;
+
+  const msgOk = message.value.trim().length>0;
+  setFieldValidity(message, msgOk); if(!msgOk) valid=false;
+
+  return valid;
+}
+
+form.addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  formStatus.className='form-status';
+  if(!validateForm()){
+    formStatus.textContent = 'Please fix the highlighted fields.';
+    formStatus.classList.add('show','error');
+    return;
+  }
+  if(!WEB3FORMS_ACCESS_KEY){
+    formStatus.textContent = 'Form is not connected yet — add a Web3Forms access key in siteConfig.';
+    formStatus.classList.add('show','error');
+    return;
+  }
+
+  submitBtn.disabled = true;
+  const originalLabel = submitBtn.textContent;
+  submitBtn.textContent = 'Sending…';
+  formStatus.textContent = '';
+  formStatus.classList.remove('show','error','success');
+
+  try{
+    const formData = new FormData(form);
+    formData.append('access_key', WEB3FORMS_ACCESS_KEY);
+    formData.append('subject', `New lesson enquiry from ${formData.get('name')}`);
+
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method:'POST',
+      headers:{ 'Accept':'application/json' },
+      body: formData
+    });
+    const data = await res.json();
+
+    if(data.success){
+      formStatus.textContent = 'Thanks! Your message has been sent — I\'ll get back to you soon.';
+      formStatus.classList.add('show','success');
+      form.reset();
+    } else {
+      throw new Error(data.message || 'Something went wrong.');
+    }
+  }catch(err){
+    formStatus.textContent = 'Could not send your message. Please try again or email directly.';
+    formStatus.classList.add('show','error');
+  }finally{
+    submitBtn.disabled = false;
+    submitBtn.textContent = originalLabel;
+  }
+});
+
+/* =======================================================================
+   GSAP + SCROLLTRIGGER ANIMATIONS
+   ======================================================================= */
+gsap.registerPlugin(ScrollTrigger);
+
+function startEntrance(){
+  gsap.timeline()
+    .to('#hero .reveal', {opacity:1, y:0, duration:1, stagger:.12, ease:'power3.out'})
+    .to('.hero-visual', {opacity:1, duration:1, ease:'power3.out'}, '<');
+}
+gsap.set('.hero-visual', {opacity:0});
+
+document.querySelectorAll('section .reveal').forEach(el=>{
+  if(el.closest('#hero')) return;
+  gsap.to(el, {
+    opacity:1, y:0, duration:.9, ease:'power3.out',
+    scrollTrigger:{ trigger: el, start:'top 88%' }
+  });
+});
+
+// staggered card groups
+[['.service-card','#services'],['.topic-card','#topics'],['.why-card','#why'],['.about-feature-card','#about'],['.faq-item','#faq']].forEach(([sel,scope])=>{
+  const items = document.querySelectorAll(scope+' '+sel);
+  gsap.set(items, {opacity:0, y:30});
+  ScrollTrigger.create({
+    trigger: scope, start:'top 75%',
+    onEnter: ()=> gsap.to(items, {opacity:1,y:0,duration:.7,stagger:.08,ease:'power3.out'})
+  });
+});
+
+// clients marquee auto-scroll
+gsap.to('#marquee-track', {
+  xPercent:-50, duration:28, ease:'none', repeat:-1
+});
+
+// string dividers "pluck" wobble on scroll into view
+['#string-path-1','#string-path-2'].forEach((sel,i)=>{
+  const base = i===0 ? 'M0,30 Q300,10 600,30 T1200,30' : 'M0,30 Q300,50 600,30 T1200,30';
+  const plucked = i===0 ? 'M0,30 Q300,55 600,10 T1200,30' : 'M0,30 Q300,5 600,55 T1200,30';
+  ScrollTrigger.create({
+    trigger: sel, start:'top 85%',
+    onEnter:()=>{
+      gsap.timeline()
+        .to(sel, {attr:{d:plucked}, duration:.25, ease:'power2.out'})
+        .to(sel, {attr:{d:base}, duration:.9, ease:'elastic.out(1,0.3)'});
+    }
+  });
+});
+
+// upcoming cards reveal progressively on scroll
+ScrollTrigger.create({
+  trigger:'#upcoming', start:'top 60%',
+  onEnter:()=>{
+    gsap.utils.toArray('.upcoming-card').forEach((c,i)=>{
+      gsap.to(c, {delay:i*0.15, duration:.1, onComplete:()=> c.classList.add('revealed')});
+    });
+  }
+});
+
+// floating notes drifting
+gsap.utils.toArray('.floating-note').forEach(n=>{
+  gsap.to(n, {
+    y: '+=' + (Math.random()*60-30),
+    x: '+=' + (Math.random()*40-20),
+    rotation: Math.random()*40-20,
+    duration: 4+Math.random()*3,
+    repeat:-1, yoyo:true, ease:'sine.inOut'
+  });
+});
+
+// float labels on hero (added after three.js labels are created below)
+
+/* =======================================================================
+   THREE.JS — INTERACTIVE HERO GUITAR
+   A single, elegant acoustic guitar (Option A from the brief), floating
+   on the right side of the Hero. Drag left/right for full 360° rotation,
+   with inertia and a slow idle spin/bob when you let go. Falls back to
+   the existing static SVG guitar illustration if WebGL is unavailable.
+   ======================================================================= */
+(function initHeroThree(){
+  const canvas = document.getElementById('hero-canvas');
+  const fallback = document.getElementById('hero-fallback');
+  const container = canvas.parentElement;
+
+  let supportsWebGL = true;
+  try{
+    const test = document.createElement('canvas');
+    supportsWebGL = !!(window.WebGLRenderingContext && (test.getContext('webgl') || test.getContext('experimental-webgl')));
+  }catch(e){ supportsWebGL = false; }
+
+  if(!supportsWebGL){
+    canvas.style.display='none';
+    fallback.style.display='flex';
+    return;
+  }
+
+  const isMobile = window.innerWidth < 760;
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(34, container.clientWidth/container.clientHeight, 0.1, 100);
+  camera.position.set(0, 0.35, 6.6);
+  camera.lookAt(0, 0.35, 0);
+
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile?1.5:2));
+  renderer.setSize(container.clientWidth, container.clientHeight);
+  renderer.shadowMap.enabled = !isMobile;
+
+  // lighting
+  const hemi = new THREE.HemisphereLight(0xfff6e6, 0x2b241d, 0.9);
+  scene.add(hemi);
+  const key = new THREE.DirectionalLight(0xffe8c9, 1.1);
+  key.position.set(3, 5, 4);
+  key.castShadow = !isMobile;
+  scene.add(key);
+  const rim = new THREE.DirectionalLight(0xc87932, 0.6);
+  rim.position.set(-4, 2, -3);
+  scene.add(rim);
+  // soft warm fill from the front-lower side, so the wood reads with a gentle
+  // sheen instead of flat shading — subtle, no extra geometry or texture cost.
+  const fill = new THREE.PointLight(0xffe8c9, 0.5, 12);
+  fill.position.set(1.2, -0.4, 3.2);
+  scene.add(fill);
+
+  // group holding the whole guitar (rotatable)
+  const rig = new THREE.Group();
+  scene.add(rig);
+
+  const woodMat = new THREE.MeshStandardMaterial({ color:0xc87932, roughness:.42, metalness:.04 });
+  const woodDarkMat = new THREE.MeshStandardMaterial({ color:0x8f4f20, roughness:.48, metalness:.04 });
+  const darkMat = new THREE.MeshStandardMaterial({ color:0x2b241d, roughness:.5 });
+  const stringMat = new THREE.MeshStandardMaterial({ color:0xf7f2e8, roughness:.25, metalness:.5 });
+  const pegMat = new THREE.MeshStandardMaterial({ color:0xefe6d3, roughness:.3, metalness:.6 });
+
+  // Builds a single, elegant acoustic guitar — the preferred "3D acoustic
+  // guitar" hero visual. Fully procedural, so there is nothing to download
+  // and nothing that can fail to load; swap in GUITAR_MODEL_URL any time
+  // for a real GLB model without touching this function.
+  function loadFallbackGuitar(){
+    const guitar = new THREE.Group();
+
+    // ---- body: a figure-8 acoustic silhouette, extruded for thickness ----
+    const bodyShape = new THREE.Shape();
+    bodyShape.moveTo(0, 1.02);
+    bodyShape.bezierCurveTo(0.58, 1.02, 0.78, 0.74, 0.72, 0.4);
+    bodyShape.bezierCurveTo(0.67, 0.14, 0.36, 0.06, 0.4, -0.16);
+    bodyShape.bezierCurveTo(0.44, -0.46, 0.88, -0.55, 0.88, -1.02);
+    bodyShape.bezierCurveTo(0.88, -1.58, 0.36, -1.9, 0, -1.9);
+    bodyShape.bezierCurveTo(-0.36, -1.9, -0.88, -1.58, -0.88, -1.02);
+    bodyShape.bezierCurveTo(-0.88, -0.55, -0.44, -0.46, -0.4, -0.16);
+    bodyShape.bezierCurveTo(-0.36, 0.06, -0.67, 0.14, -0.72, 0.4);
+    bodyShape.bezierCurveTo(-0.78, 0.74, -0.58, 1.02, 0, 1.02);
+
+    const bodyGeo = new THREE.ExtrudeGeometry(bodyShape, {
+      depth: 0.3, bevelEnabled: true, bevelSize: 0.025, bevelThickness: 0.025, bevelSegments: 4, curveSegments: 32
+    });
+    bodyGeo.center();
+    const body = new THREE.Mesh(bodyGeo, woodMat);
+    body.castShadow = true; body.receiveShadow = true;
+    guitar.add(body);
+
+    // subtle darker binding ring around the edge (reads as a premium detail)
+    const edgeGeo = new THREE.EdgesGeometry(bodyGeo, 20);
+    const edgeLines = new THREE.LineSegments(edgeGeo, new THREE.LineBasicMaterial({ color:0x5a3416, transparent:true, opacity:0.35 }));
+    guitar.add(edgeLines);
+
+    // sound hole
+    const soundHole = new THREE.Mesh(new THREE.RingGeometry(0.16, 0.2, 32), darkMat);
+    soundHole.position.set(0, 0.28, 0.16);
+    guitar.add(soundHole);
+    const soundHoleBack = new THREE.Mesh(new THREE.CircleGeometry(0.16, 32), darkMat);
+    soundHoleBack.position.set(0, 0.28, 0.155);
+    guitar.add(soundHoleBack);
+
+    // bridge, just below the sound hole
+    const bridge = new THREE.Mesh(new THREE.BoxGeometry(0.34, 0.07, 0.03), darkMat);
+    bridge.position.set(0, -0.32, 0.165);
+    guitar.add(bridge);
+
+    // neck + fretboard
+    const neck = new THREE.Mesh(new THREE.BoxGeometry(0.16, 1.55, 0.09), woodDarkMat);
+    neck.position.set(0, 1.72, 0.02);
+    neck.castShadow = true;
+    guitar.add(neck);
+    const fretboard = new THREE.Mesh(new THREE.BoxGeometry(0.18, 1.5, 0.02), darkMat);
+    fretboard.position.set(0, 1.72, 0.075);
+    guitar.add(fretboard);
+    // fret lines
+    for(let i=0;i<9;i++){
+      const fret = new THREE.Mesh(new THREE.BoxGeometry(0.18, 0.008, 0.005), pegMat);
+      fret.position.set(0, 1.1 + i*0.16, 0.086);
+      guitar.add(fret);
+    }
+
+    // headstock + tuning pegs
+    const headstock = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.4, 0.07), woodDarkMat);
+    headstock.position.set(0, 2.62, 0);
+    headstock.castShadow = true;
+    guitar.add(headstock);
+    for(let side=-1; side<=1; side+=2){
+      for(let i=0;i<3;i++){
+        const peg = new THREE.Mesh(new THREE.CylinderGeometry(0.025,0.025,0.09,10), pegMat);
+        peg.rotation.z = Math.PI/2;
+        peg.position.set(side*0.17, 2.44 + i*0.16, 0);
+        guitar.add(peg);
+      }
+    }
+
+    // strings, running from bridge up over the sound hole and neck to the nut
+    for(let i=0;i<6;i++){
+      const x = -0.09 + i*0.036;
+      const points = [
+        new THREE.Vector3(x*1.6, -0.32, 0.175),
+        new THREE.Vector3(x, 2.42, 0.09)
+      ];
+      const stringGeo = new THREE.BufferGeometry().setFromPoints(points);
+      const strand = new THREE.Line(stringGeo, stringMat);
+      guitar.add(strand);
+    }
+
+    guitar.scale.setScalar(0.86);
+    guitar.position.set(0, -0.55, 0);
+    guitar.rotation.x = -0.04;
+
+    return guitar;
+  }
+
+  if(GUITAR_MODEL_URL && typeof THREE.GLTFLoader === 'function'){
+    // Loader available and a model URL was supplied — use the real model.
+    const loader = new THREE.GLTFLoader();
+    loader.load(GUITAR_MODEL_URL, gltf=>{
+      rig.add(gltf.scene);
+    }, undefined, ()=>{
+      rig.add(loadFallbackGuitar());
+    });
+  } else {
+    rig.add(loadFallbackGuitar());
+  }
+
+  // soft contact shadow beneath the (visually floating) guitar
+  if(!isMobile){
+    const ground = new THREE.Mesh(new THREE.CircleGeometry(1.6, 40), new THREE.ShadowMaterial({opacity:0.16}));
+    ground.rotation.x = -Math.PI/2; ground.position.y = -1.85; ground.receiveShadow = true;
+    scene.add(ground);
+  }
+
+  // idle animation
+  let idleT = 0;
+
+  // drag-to-rotate with inertia
+  let isDragging=false, prevX=0, velocity=0, rotY = 0.3;
+  rig.rotation.y = rotY;
+
+  function pointerDown(x){ isDragging=true; prevX=x; velocity=0; }
+  function pointerMove(x){
+    if(!isDragging) return;
+    const dx = x - prevX;
+    velocity = dx * 0.008;
+    rotY += velocity;
+    prevX = x;
+    gsap.to('#drag-hint', {opacity:0, duration:.4});
+  }
+  function pointerUp(){ isDragging=false; }
+
+  canvas.addEventListener('mousedown', e=> pointerDown(e.clientX));
+  window.addEventListener('mousemove', e=> pointerMove(e.clientX));
+  window.addEventListener('mouseup', pointerUp);
+  canvas.addEventListener('touchstart', e=> pointerDown(e.touches[0].clientX), {passive:true});
+  canvas.addEventListener('touchmove', e=> pointerMove(e.touches[0].clientX), {passive:true});
+  canvas.addEventListener('touchend', pointerUp);
+  document.getElementById('drag-hint-text').textContent = isMobile ? 'Swipe to explore' : 'Drag to explore';
+
+  function animate(){
+    requestAnimationFrame(animate);
+    idleT += 0.016;
+
+    if(!isDragging){
+      velocity *= 0.94; // inertia decay
+      rotY += velocity;
+      rotY += Math.sin(idleT*0.4) * 0.0006; // gentle idle sway
+    }
+    rig.rotation.y = rotY;
+    rig.position.y = 0.15 + Math.sin(idleT*0.9)*0.035;
+
+    renderer.render(scene, camera);
+  }
+  animate();
+
+  window.addEventListener('resize', ()=>{
+    const w = container.clientWidth, h = container.clientHeight;
+    camera.aspect = w/h; camera.updateProjectionMatrix();
+    renderer.setSize(w,h);
+  });
+
+  // floating UI labels around the model
+  const labelDefs = [
+    {text:'PLAY', top:'12%', left:'8%'},
+    {text:'LEARN', top:'20%', left:'82%'},
+    {text:'PRACTICE', top:'70%', left:'6%'},
+    {text:'PERFORM', top:'78%', left:'80%'}
+  ];
+  labelDefs.forEach((l,i)=>{
+    const el = document.createElement('div');
+    el.className='float-label';
+    el.textContent = l.text;
+    el.style.top = l.top; el.style.left = l.left;
+    container.appendChild(el);
+    gsap.to(el, { y: i%2===0? -14:14, duration: 2.4+i*0.3, repeat:-1, yoyo:true, ease:'sine.inOut' });
+  });
+})();
+
+/* =======================================================================
+   THREE.JS — ABOUT SECTION: INTERACTIVE 3D ELECTRIC GUITAR
+   A single light-finished electric guitar, presented in a premium dark
+   stage on the left of the About section. Drag (mouse or touch) for a
+   full 360° rotation with inertia; a very slow idle spin/bob plays when
+   the visitor isn't interacting. Falls back to a static illustration if
+   WebGL is unavailable, and respects prefers-reduced-motion.
+   ======================================================================= */
+(function initAboutGuitarThree(){
+  const canvas = document.getElementById('about-guitar-canvas');
+  if(!canvas) return;
+  const fallback = document.getElementById('about-3d-fallback');
+  const hint = document.getElementById('about-3d-hint');
+  const hintText = document.getElementById('about-3d-hint-text');
+  const container = canvas.parentElement;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let supportsWebGL = true;
+  try{
+    const test = document.createElement('canvas');
+    supportsWebGL = !!(window.WebGLRenderingContext && (test.getContext('webgl') || test.getContext('experimental-webgl')));
+  }catch(e){ supportsWebGL = false; }
+
+  if(!supportsWebGL){
+    canvas.style.display='none';
+    if(fallback) fallback.style.display='flex';
+    if(hint) hint.style.display='none';
+    return;
+  }
+
+  const isMobile = window.innerWidth < 760;
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(32, container.clientWidth/container.clientHeight, 0.1, 100);
+  camera.position.set(0, 0.1, 7.2);
+  camera.lookAt(0, 0.1, 0);
+
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile?1.5:2));
+  renderer.setSize(container.clientWidth, container.clientHeight);
+
+  // premium studio-style lighting so the light-coloured body pops against
+  // the dark stage background behind it.
+  scene.add(new THREE.HemisphereLight(0xfff2df, 0x1a140d, 0.55));
+  const key = new THREE.DirectionalLight(0xfff2df, 1.25);
+  key.position.set(3, 4.5, 5);
+  scene.add(key);
+  const rim = new THREE.DirectionalLight(0xc87932, 0.9);
+  rim.position.set(-4, 1.5, -3);
+  scene.add(rim);
+  const fill = new THREE.PointLight(0xffffff, 0.35, 14);
+  fill.position.set(-1.5, -1, 3.5);
+  scene.add(fill);
+
+  const rig = new THREE.Group();
+  scene.add(rig);
+
+  // light, premium finishes — cream body / soft beige neck, kept distinct
+  // from the darker acoustic guitar used in the Hero section.
+  const bodyMat = new THREE.MeshStandardMaterial({ color:0xf3e6cf, roughness:.32, metalness:.06 });
+  const pickguardMat = new THREE.MeshStandardMaterial({ color:0xe9dcc0, roughness:.4, metalness:.05 });
+  const neckMat = new THREE.MeshStandardMaterial({ color:0xead9b8, roughness:.4, metalness:.04 });
+  const fretboardMat = new THREE.MeshStandardMaterial({ color:0x3a2c1c, roughness:.5 });
+  const hardwareMat = new THREE.MeshStandardMaterial({ color:0xd8d2c4, roughness:.3, metalness:.75 });
+  const pickupMat = new THREE.MeshStandardMaterial({ color:0x2b241d, roughness:.45, metalness:.2 });
+  const stringMat = new THREE.MeshStandardMaterial({ color:0xf7f2e8, roughness:.2, metalness:.6 });
+
+  function buildElectricGuitar(){
+    const guitar = new THREE.Group();
+
+    // ---- solid double-cutaway body ----
+    const bodyShape = new THREE.Shape();
+    bodyShape.moveTo(0, 1.3);
+    bodyShape.bezierCurveTo(0.55, 1.3, 0.75, 1.0, 0.7, 0.6);
+    bodyShape.bezierCurveTo(0.66, 0.3, 0.4, 0.25, 0.48, 0.0);
+    bodyShape.bezierCurveTo(0.58, -0.3, 0.95, -0.35, 0.95, -0.85);
+    bodyShape.bezierCurveTo(0.95, -1.35, 0.5, -1.6, 0.05, -1.6);
+    bodyShape.bezierCurveTo(-0.4, -1.6, -0.85, -1.35, -0.85, -0.85);
+    bodyShape.bezierCurveTo(-0.85, -0.35, -0.5, -0.3, -0.42, 0.0);
+    bodyShape.bezierCurveTo(-0.34, 0.25, -0.6, 0.35, -0.68, 0.65);
+    bodyShape.bezierCurveTo(-0.78, 1.05, -0.5, 1.3, 0, 1.3);
+
+    const bodyGeo = new THREE.ExtrudeGeometry(bodyShape, {
+      depth: 0.22, bevelEnabled: true, bevelSize: 0.03, bevelThickness: 0.03, bevelSegments: 4, curveSegments: 32
+    });
+    bodyGeo.center();
+    const body = new THREE.Mesh(bodyGeo, bodyMat);
+    guitar.add(body);
+
+    // pickguard
+    const guardShape = new THREE.Shape();
+    guardShape.moveTo(-0.5, 0.55);
+    guardShape.quadraticCurveTo(0.15, 0.7, 0.55, 0.35);
+    guardShape.quadraticCurveTo(0.68, -0.15, 0.5, -0.75);
+    guardShape.quadraticCurveTo(0.1, -1.0, -0.45, -0.8);
+    guardShape.quadraticCurveTo(-0.62, -0.1, -0.5, 0.55);
+    const guardGeo = new THREE.ExtrudeGeometry(guardShape, { depth:0.015, bevelEnabled:false, curveSegments:24 });
+    const guard = new THREE.Mesh(guardGeo, pickguardMat);
+    guard.position.z = 0.115;
+    guitar.add(guard);
+
+    // pickups
+    [0.28, -0.28].forEach(y=>{
+      const pickup = new THREE.Mesh(new THREE.BoxGeometry(0.42, 0.11, 0.05), pickupMat);
+      pickup.position.set(0, y, 0.145);
+      guitar.add(pickup);
+    });
+
+    // bridge
+    const bridge = new THREE.Mesh(new THREE.BoxGeometry(0.44, 0.1, 0.05), hardwareMat);
+    bridge.position.set(0, -0.72, 0.14);
+    guitar.add(bridge);
+
+    // control knobs
+    [[-0.32,-0.95],[-0.1,-1.05],[0.12,-1.1]].forEach(([x,y])=>{
+      const knob = new THREE.Mesh(new THREE.CylinderGeometry(0.05,0.05,0.04,16), hardwareMat);
+      knob.rotation.x = Math.PI/2;
+      knob.position.set(x, y, 0.135);
+      guitar.add(knob);
+    });
+
+    // neck + fretboard
+    const neck = new THREE.Mesh(new THREE.BoxGeometry(0.17, 1.7, 0.1), neckMat);
+    neck.position.set(0, 1.95, 0.01);
+    guitar.add(neck);
+    const fretboard = new THREE.Mesh(new THREE.BoxGeometry(0.19, 1.65, 0.02), fretboardMat);
+    fretboard.position.set(0, 1.95, 0.065);
+    guitar.add(fretboard);
+    for(let i=0;i<10;i++){
+      const fret = new THREE.Mesh(new THREE.BoxGeometry(0.19, 0.008, 0.005), hardwareMat);
+      fret.position.set(0, 1.25 + i*0.15, 0.076);
+      guitar.add(fret);
+    }
+
+    // headstock (inline, strat-style) + tuners on one edge
+    const headShape = new THREE.Shape();
+    headShape.moveTo(-0.1, 0);
+    headShape.lineTo(0.11, 0);
+    headShape.lineTo(0.2, 0.55);
+    headShape.lineTo(0.05, 0.62);
+    headShape.lineTo(-0.16, 0.5);
+    headShape.lineTo(-0.1, 0);
+    const headGeo = new THREE.ExtrudeGeometry(headShape, { depth:0.08, bevelEnabled:true, bevelSize:0.01, bevelThickness:0.01, curveSegments:12 });
+    const headstock = new THREE.Mesh(headGeo, neckMat);
+    headstock.position.set(-0.06, 2.75, -0.04);
+    guitar.add(headstock);
+    for(let i=0;i<6;i++){
+      const tuner = new THREE.Mesh(new THREE.CylinderGeometry(0.028,0.028,0.09,10), hardwareMat);
+      tuner.rotation.z = Math.PI/2;
+      tuner.position.set(0.24, 2.95 - i*0.14, -0.02);
+      guitar.add(tuner);
+    }
+
+    // strings
+    for(let i=0;i<6;i++){
+      const x = -0.1 + i*0.04;
+      const points = [
+        new THREE.Vector3(x*1.5, -0.72, 0.165),
+        new THREE.Vector3(x*0.9, 3.0, 0.03)
+      ];
+      const strand = new THREE.Line(new THREE.BufferGeometry().setFromPoints(points), stringMat);
+      guitar.add(strand);
+    }
+
+    guitar.scale.setScalar(0.82);
+    guitar.position.set(0.05, -0.35, 0);
+    guitar.rotation.x = -0.03;
+
+    return guitar;
+  }
+
+  if(GUITAR_MODEL_URL && typeof THREE.GLTFLoader === 'function'){
+    const loader = new THREE.GLTFLoader();
+    loader.load(GUITAR_MODEL_URL, gltf=>{ rig.add(gltf.scene); }, undefined, ()=>{ rig.add(buildElectricGuitar()); });
+  } else {
+    rig.add(buildElectricGuitar());
+  }
+
+  let idleT = Math.random()*10;
+  let isDragging=false, prevX=0, velocity=0, rotY = -0.55;
+  rig.rotation.y = rotY;
+
+  function pointerDown(x){ isDragging=true; prevX=x; velocity=0; }
+  function pointerMove(x){
+    if(!isDragging) return;
+    const dx = x - prevX;
+    velocity = dx * 0.007;
+    rotY += velocity;
+    prevX = x;
+    if(hint) gsap.to(hint, {opacity:0, duration:.4});
+  }
+  function pointerUp(){ isDragging=false; }
+
+  canvas.addEventListener('mousedown', e=> pointerDown(e.clientX));
+  window.addEventListener('mousemove', e=> pointerMove(e.clientX));
+  window.addEventListener('mouseup', pointerUp);
+  canvas.addEventListener('touchstart', e=> pointerDown(e.touches[0].clientX), {passive:true});
+  canvas.addEventListener('touchmove', e=> pointerMove(e.touches[0].clientX), {passive:true});
+  canvas.addEventListener('touchend', pointerUp);
+  if(hintText) hintText.textContent = isMobile ? 'Swipe to rotate' : 'Drag to rotate';
+
+  function animate(){
+    requestAnimationFrame(animate);
+    if(!isDragging){
+      velocity *= 0.94;
+      rotY += velocity;
+      if(!reduceMotion) rotY += 0.0009; // very slow idle rotation
+    }
+    rig.rotation.y = rotY;
+    if(!reduceMotion){
+      idleT += 0.016;
+      rig.position.y = Math.sin(idleT*0.8) * 0.04;
+    }
+    renderer.render(scene, camera);
+  }
+  animate();
+
+  window.addEventListener('resize', ()=>{
+    const w = container.clientWidth, h = container.clientHeight;
+    if(!w || !h) return;
+    camera.aspect = w/h; camera.updateProjectionMatrix();
+    renderer.setSize(w,h);
+  });
+})();
+
+/* =======================================================================
+   THREE.JS — SUBTLE ABOUT ME VISUAL (small rotating pick, complements Hero)
+   ======================================================================= */
+(function initAboutThree(){
+  const canvas = document.getElementById('about-canvas');
+  if(!canvas) return;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const container = canvas.parentElement;
+
+  let ok = true;
+  try{
+    const t = document.createElement('canvas');
+    ok = !!(window.WebGLRenderingContext && (t.getContext('webgl') || t.getContext('experimental-webgl')));
+  }catch(e){ ok = false; }
+  if(!ok) return;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 20);
+  camera.position.set(0, 0.3, 4.2);
+
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
+
+  function resize(){
+    const s = container.clientWidth;
+    renderer.setSize(s, s);
+    camera.aspect = 1; camera.updateProjectionMatrix();
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  scene.add(new THREE.HemisphereLight(0xfff6e6, 0x2b241d, 1.0));
+  const key = new THREE.DirectionalLight(0xffe8c9, 1);
+  key.position.set(2,3,3); scene.add(key);
+
+  const pickShape = new THREE.Shape();
+  pickShape.moveTo(0, 1.1);
+  pickShape.bezierCurveTo(0.75, 0.9, 1.05, 0.1, 1.0, -0.55);
+  pickShape.bezierCurveTo(0.95, -1.0, 0.4, -1.25, 0, -1.25);
+  pickShape.bezierCurveTo(-0.4, -1.25, -0.95, -1.0, -1.0, -0.55);
+  pickShape.bezierCurveTo(-1.05, 0.1, -0.75, 0.9, 0, 1.1);
+  const geo = new THREE.ExtrudeGeometry(pickShape, { depth:0.16, bevelEnabled:true, bevelSize:0.03, bevelThickness:0.03, bevelSegments:3, curveSegments:24 });
+  geo.center();
+  const mat = new THREE.MeshStandardMaterial({ color:0xc87932, roughness:.4, metalness:.15 });
+  const pick = new THREE.Mesh(geo, mat);
+  pick.scale.set(0.7,0.7,0.7);
+  scene.add(pick);
+
+  let t0 = 0;
+  function animate(){
+    requestAnimationFrame(animate);
+    if(!reduceMotion){
+      t0 += 0.008;
+      pick.rotation.y = t0;
+      pick.rotation.x = Math.sin(t0*0.6)*0.15;
+    }
+    renderer.render(scene, camera);
+  }
+  animate();
+})();
+
+/* Prefers-reduced-motion: skip elastic string plucks / notes drift additions handled via CSS media query above */
+</script>
+</body>
+</html>
